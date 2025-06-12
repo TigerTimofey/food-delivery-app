@@ -22,9 +22,7 @@ function Navbar({ lang, setLang }) {
           <span className="burger-bar"></span>
           <span className="burger-bar"></span>
         </button>
-        <div
-          className={`navbar-menu-wrapper${menuOpen ? ' open' : ''}`}
-        >
+        <div className={`navbar-menu-wrapper${menuOpen ? ' open' : ''}`}>
           <ul className={`navbar-menu${menuOpen ? ' open' : ''}`}>
             <li><a href="#">{words.home}</a></li>
             <li><a href="#">{words.features}</a></li>

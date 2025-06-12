@@ -1,10 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './PersonalDropdown.css'
-
-const LANGUAGES = [
-  { code: 'en', label: 'EN', flag: '🇬🇧' },
-  { code: 'et', label: 'EE', flag: '🇪🇪' }
-]
+import { LANGUAGES } from '../data/languages'
 
 function PersonalDropdown({ lang, setLang, words }) {
   const [open, setOpen] = useState(false)
@@ -32,7 +28,13 @@ function PersonalDropdown({ lang, setLang, words }) {
         aria-label="Language menu"
         type="button"
       >
-        {words.languages}
+        <span
+          style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center', verticalAlign: 'middle' }}
+          dangerouslySetInnerHTML={{ __html: words.languages }}
+        ></span>
+        <span>
+          {LANGUAGES.find(l => l.code === lang)?.label}
+        </span>
       </button>
       {open && (
         <ul className="personal-dropdown-menu center-dropdown">
@@ -47,8 +49,12 @@ function PersonalDropdown({ lang, setLang, words }) {
                 textAlign: 'center'
               }}
             >
-              <span role="img" aria-label={l.label} style={{ marginRight: 8 }}>{l.flag}</span>
-              {l.label}
+              <span
+                aria-label={l.label}
+                style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center' }}
+                dangerouslySetInnerHTML={{ __html: l.flag }}
+              ></span>
+              <span>{l.label}</span>
             </li>
           ))}
         </ul>
