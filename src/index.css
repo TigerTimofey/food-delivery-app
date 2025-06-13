@@ -1,16 +1,13 @@
 @import './styles/variables.css';
 
 :root {
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #eaeaea;
-
+  background-color: var(--web-bg);
   font-synthesis: none;
   text-rendering: osptimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   font-family: var(--brand-font);
 }
 

@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: #fff;
+  background: var(--navbar-bg);
   border-bottom: 1px solid #eee;
   z-index: 1000;
   box-sizing: border-box;
@@ -112,6 +112,11 @@
   display: none !important;
 }
 
+.navbar-burger-hr,
+.navbar-burger-bottom-hr {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .navbar-menu {
     gap: 20px;
@@ -119,6 +124,10 @@
   }
   .navbar-lang {
     margin-left: auto;
+  }
+  .navbar-burger-hr,
+  .navbar-burger-bottom-hr {
+    display: block;
   }
 }
 
