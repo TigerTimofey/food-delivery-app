@@ -5,6 +5,7 @@ import Home from './components/pages/home/Home'
 import Features from './components/pages/features/Features'
 import Pricing from './components/pages/pricing/Pricing'
 import About from './components/pages/about/About'
+import { HOME_TEXT } from './data/languages'
 
 function App() {
   const [lang, setLang] = useState('en')
@@ -12,7 +13,7 @@ function App() {
 
   // Map nav keys to components
   const pageComponents = {
-    home: <Home />,
+    home: <Home lang={lang} />,
     features: <Features />,
     pricing: <Pricing />,
     about: <About />

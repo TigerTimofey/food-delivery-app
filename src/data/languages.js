@@ -15,10 +15,23 @@ const languages = {
   },
   et: {
     home: "Avaleht",
-    features: "Produkt",
+    features: "Tooted",
     pricing: "Hinnakiri",
     about: "Meist",
     languages: eeFlag
+  }
+}
+
+export const HOME_TEXT = {
+  et: {
+    title: "Me kokkame linna parimaid poke kausse",
+    subtitle: "Hea toidu kunst algab sinust",
+    desc: "Sina soovid – meie teeme. Kokkame ja toome kohale – sina oled õnnelik."
+  },
+  en: {
+    title: "We coocking best poke bowls in town",
+    subtitle: "Art of great food starts with you",
+    desc: "You want - we are happy. We cook and deliver - you are happy."
   }
 }
 
