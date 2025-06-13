@@ -1,6 +1,7 @@
 import React from 'react'
 import './Home.css'
 import { HOME_TEXT } from '../../../data/languages'
+import img2 from '/img4.avif'
 
 function Home({ lang }) {
   const text = HOME_TEXT[lang] || HOME_TEXT.en
@@ -15,6 +16,9 @@ function Home({ lang }) {
           {text.desc}
         </div>
       </div>
+      <section className="home-img-section">
+        <img src={img2} alt="Bolt car" className="home-img-full" />
+      </section>
     </section>
   )
 }
