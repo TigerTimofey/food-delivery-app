@@ -92,7 +92,19 @@
   border-radius: 0;
 }
 
+.personal-dropdown-btn-flag {
+  margin-right: 8px;
+  margin-bottom: 2px;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+
+}
+
 @media (max-width: 768px) {
+  .personal-dropdown-btn-flag {
+      margin-bottom: 5px;
+  } 
 
   .personal-dropdown-btn {
     font-size: 2.5rem;

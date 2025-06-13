@@ -29,7 +29,7 @@ function PersonalDropdown({ lang, setLang, words }) {
         type="button"
       >
         <span
-          style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center', verticalAlign: 'middle' }}
+          className="personal-dropdown-btn-flag"
           dangerouslySetInnerHTML={{ __html: words.languages }}
         ></span>
         <span>
