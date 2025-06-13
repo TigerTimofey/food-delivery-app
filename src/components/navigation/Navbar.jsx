@@ -1,18 +1,24 @@
 import  { useState } from 'react'
 import './Navbar.css'
-import PersonalDropdown from '../utils/PersonalDropdown'
-import languages from '../data/languages'
-import { BUSINESS_DATA } from '../data/bussines-data'
+import PersonalDropdown from '../../utils/dropdown-menu/PersonalDropdown'
+import languages from '../../data/languages'
+import { BUSINESS_DATA } from '../../data/bussines-data'
 
-function Navbar({ lang, setLang }) {
+function Navbar({ lang, setLang, setPage }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const words = languages[lang]
   const business = BUSINESS_DATA[0]
 
+  // Helper to handle navigation
+  const handleNav = (navKey) => {
+    setPage && setPage(navKey)
+    setMenuOpen(false)
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <div className="navbar-logo">
+        <div className="navbar-logo" onClick={() => handleNav('home')} style={{ cursor: 'pointer' }}>
           {business.brandName}
         </div>
         <button
@@ -34,10 +40,10 @@ function Navbar({ lang, setLang }) {
             </>
           )}
           <ul className={`navbar-menu${menuOpen ? ' open' : ''}`}>
-            <li><a href="#">{words.home}</a></li>
-            <li><a href="#">{words.features}</a></li>
-            <li><a href="#">{words.pricing}</a></li>
-            <li><a href="#">{words.about}</a></li>
+            <li><a href="#" onClick={() => handleNav('home')}>{words.home}</a></li>
+            <li><a href="#" onClick={() => handleNav('features')}>{words.features}</a></li>
+            <li><a href="#" onClick={() => handleNav('pricing')}>{words.pricing}</a></li>
+            <li><a href="#" onClick={() => handleNav('about')}>{words.about}</a></li>
             {menuOpen && (
               <li>
                 <div className="navbar-lang">

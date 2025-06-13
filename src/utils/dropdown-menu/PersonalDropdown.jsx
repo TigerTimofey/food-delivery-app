@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './PersonalDropdown.css'
-import { LANGUAGES } from '../data/languages'
+import { LANGUAGES } from '../../data/languages'
 
 function PersonalDropdown({ lang, setLang, words }) {
   const [open, setOpen] = useState(false)

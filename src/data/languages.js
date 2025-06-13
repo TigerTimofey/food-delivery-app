@@ -8,14 +8,14 @@ export const LANGUAGES = [
 const languages = {
   en: {
     home: "Home",
-    features: "Features",
+    features: "Product",
     pricing: "Pricing",
     about: "About",
     languages: enFlag
   },
   et: {
     home: "Avaleht",
-    features: "Funktsioonid",
+    features: "Produkt",
     pricing: "Hinnakiri",
     about: "Meist",
     languages: eeFlag

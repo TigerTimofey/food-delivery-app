@@ -1,0 +1,7 @@
+.pricing-container {
+  font-size: 2rem;
+  color: var(--brand-color);
+  text-align: center;
+  margin-top: 3rem;
+  font-family: var(--brand-font);
+}
