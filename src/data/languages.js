@@ -35,4 +35,84 @@ export const HOME_TEXT = {
   }
 }
 
+// --- New section texts for cards/services ---
+export const PRODUCTS_SECTION_TEXT = {
+  en: {
+    title: "Our products",
+    desc: "Products and features vary by country. Some features listed here may not be available in your app."
+  },
+  et: {
+    title: "Meie tooted",
+    desc: "Tooted ja funktsioonid erinevad riigiti. Mõned siin loetletud funktsioonid ei pruugi sinu rakenduses saadaval olla."
+  }
+}
+
+// --- New: Product card texts for each language ---
+export const PRODUCTS_TEXT = {
+  en: [
+    {
+      title: "Product 1",
+      desc: "Description of product 1.",
+      label: "Get started"
+    },
+    {
+      title: "Product 2",
+      desc: "Description of product 2.",
+      label: "Read more"
+    },
+    {
+      title: "Product 3",
+      desc: "Description of product 3.",
+      label: "Read more"
+    },
+    {
+      title: "Product 4",
+      desc: "Description of product 4.",
+      label: "Read more"
+    },
+    {
+      title: "Product 5",
+      desc: "Description of product 5.",
+      label: "Read more"
+    },
+    {
+      title: "Product 6",
+      desc: "Description of product 6.",
+      label: "Read more"
+    }
+  ],
+  et: [
+    {
+      title: "Toode 1",
+      desc: "Toote 1 kirjeldus.",
+      label: "Alusta"
+    },
+    {
+      title: "Toode 2",
+      desc: "Toote 2 kirjeldus.",
+      label: "Loe edasi"
+    },
+    {
+      title: "Toode 3",
+      desc: "Toote 3 kirjeldus.",
+      label: "Loe edasi"
+    },
+    {
+      title: "Toode 4",
+      desc: "Toote 4 kirjeldus.",
+      label: "Loe edasi"
+    },
+    {
+      title: "Toode 5",
+      desc: "Toote 5 kirjeldus.",
+      label: "Loe edasi"
+    },
+    {
+      title: "Toode 6",
+      desc: "Toote 6 kirjeldus.",
+      label: "Loe edasi"
+    }
+  ]
+}
+
 export default languages
