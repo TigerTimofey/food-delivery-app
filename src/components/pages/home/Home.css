@@ -295,10 +295,10 @@
 
 @media (min-width: 1200px) {
   .home-cards-inner {
-    justify-content: center;
+    justify-content: flex-start;
   }
   .home-card {
-    flex: 1 1 350px;
+    flex: 0 0 368px;
     max-width: 368px;
     min-width: 320px;
   }

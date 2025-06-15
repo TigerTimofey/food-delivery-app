@@ -44,12 +44,12 @@ function Home({ lang }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Show scroll-to-top button only when user touches (scrolls to) bottom of app
+
   useEffect(() => {
     function handleScroll() {
       if (!bottomRef.current) return
       const rect = bottomRef.current.getBoundingClientRect()
-      // If bottomRef is visible in viewport (user at bottom)
+
       setShowScrollTop(rect.top <= window.innerHeight && rect.bottom >= 0)
     }
     window.addEventListener('scroll', handleScroll)
@@ -63,7 +63,7 @@ function Home({ lang }) {
 
   return (
     <section className="home-container">
-      {/* Show floating scroll-to-top button only if user touches bottom */}
+
       {showScrollTop && (
         <button
           className="scroll-to-top-fab"
@@ -74,7 +74,6 @@ function Home({ lang }) {
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
         >
-          {/* Up arrow icon */}
           <svg viewBox="0 0 24 24" fill="none">
             <path d="M12 6l-7 7h4v5h6v-5h4l-7-7z" fill="currentColor"/>
           </svg>
@@ -92,7 +91,7 @@ function Home({ lang }) {
       <section className="home-img-section">
         <img src={img2} alt="Bolt car" className="home-img-full" />
       </section>
-      {/* --- Our services section --- */}
+
       <section className="home-services-section">
         <div className="rt-ContainerInner">
           <div className="home-services-content">
@@ -123,7 +122,7 @@ function Home({ lang }) {
                   const el = document.querySelector('.home-cards-inner')
                   if (!el) return
                   const card = el.querySelector('.home-card')
-                  const cardWidth = card ? card.offsetWidth + 40 : 380 // 40px gap
+                  const cardWidth = card ? card.offsetWidth + 40 : 380 
                   el.scrollBy({ left: cardWidth, behavior: 'smooth' })
                 }}
               >
@@ -133,7 +132,7 @@ function Home({ lang }) {
           </div>
         </div>
       </section>
-      {/* --- end Our services section --- */}
+
       <section className="home-cards-section">
         <div className="home-cards-container">
           <div className="home-cards-inner">
@@ -157,7 +156,6 @@ function Home({ lang }) {
           </div>
         </div>
       </section>
-      {/* Place this at the very end of the page to detect bottom */}
       <div ref={bottomRef} style={{ height: 1 }} />
     </section>
   )
