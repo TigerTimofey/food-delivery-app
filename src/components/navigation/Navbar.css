@@ -149,6 +149,73 @@ body.navbar-lock-scroll {
   touch-action: none !important;
 }
 
+/* Floating burger menu button for mobile, always on screen when nav is hidden */
+.mobile-burger-fab {
+  position: fixed;
+  top: 1.1rem;
+  right: 1.1rem;
+  z-index: 1201;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, box-shadow 0.2s, top 0.2s;
+  opacity: 0.97;
+  padding: 0;
+}
+
+/* Move the button even higher when nav is hidden */
+.mobile-burger-fab-top {
+  top: 0.3rem;
+}
+
+.mobile-burger-fab svg {
+  width: 28px;
+  height: 28px;
+  color: var(--brand-color);
+}
+
+.mobile-burger-fab:active {
+  box-shadow: 0 4px 16px rgba(80,220,100,0.13);
+}
+
+/* Floating scroll-to-top button for mobile, bottom right */
+.scroll-to-top-fab {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.5rem;
+  z-index: 1201;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, box-shadow 0.2s, bottom 0.2s;
+  opacity: 0.97;
+  padding: 0;
+}
+
+.scroll-to-top-fab svg {
+  width: 28px;
+  height: 28px;
+  color: var(--brand-color);
+}
+
+.scroll-to-top-fab:active {
+  box-shadow: 0 4px 16px rgba(80,220,100,0.13);
+}
+
 @media (max-width: 900px) {
   .navbar-menu {
     gap: 20px;

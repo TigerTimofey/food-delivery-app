@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './Home.css'
 import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT } from '../../../data/languages'
 import img2 from '/img4.avif'
@@ -8,8 +8,9 @@ function Home({ lang }) {
   const text = HOME_TEXT[lang] || HOME_TEXT.en
   const productsText = PRODUCTS_SECTION_TEXT[lang] || PRODUCTS_SECTION_TEXT.en
   const productsLangArr = PRODUCTS_TEXT[lang] || PRODUCTS_TEXT.en
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  const bottomRef = useRef(null)
 
-  // Hide navbar on scroll down (mobile only)
   useEffect(() => {
     const nav = document.querySelector('.navbar, nav, .main-navbar')
     if (!nav) return
@@ -43,8 +44,42 @@ function Home({ lang }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Show scroll-to-top button only when user touches (scrolls to) bottom of app
+  useEffect(() => {
+    function handleScroll() {
+      if (!bottomRef.current) return
+      const rect = bottomRef.current.getBoundingClientRect()
+      // If bottomRef is visible in viewport (user at bottom)
+      setShowScrollTop(rect.top <= window.innerHeight && rect.bottom >= 0)
+    }
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
   return (
     <section className="home-container">
+      {/* Show floating scroll-to-top button only if user touches bottom */}
+      {showScrollTop && (
+        <button
+          className="scroll-to-top-fab"
+          aria-label="Scroll to top"
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+        >
+          {/* Up arrow icon */}
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 6l-7 7h4v5h6v-5h4l-7-7z" fill="currentColor"/>
+          </svg>
+        </button>
+      )}
       <div className="home-hero">
         <h1 className="home-title">{text.title}</h1>
         <div className="home-subtitle">
@@ -122,6 +157,8 @@ function Home({ lang }) {
           </div>
         </div>
       </section>
+      {/* Place this at the very end of the page to detect bottom */}
+      <div ref={bottomRef} style={{ height: 1 }} />
     </section>
   )
 }
