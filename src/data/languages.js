@@ -115,4 +115,34 @@ export const PRODUCTS_TEXT = {
   ]
 }
 
+export const MIDNIGHT_DEALS_TEXT = {
+  en: {
+    eyebrow: "— weekly Deals",
+    title: "Samurai\nMega Deals!",
+    items: [
+      "Feature 1",
+      "Feature 2",
+      "Feature 3",
+      "Feature 4",
+      "Feature 5",
+       "Feature 6"
+      
+    ],
+    button: "Contact us"
+  },
+  et: {
+    eyebrow: "— nädala pakkumised",
+    title: "Samurai\nMega pakkumised!",
+    items: [
+     "Feature 1",
+      "Feature 2",
+      "Feature 3",
+      "Feature 4",
+      "Feature 5",
+       "Feature 6"
+    ],
+    button: "Võta ühendust"
+  }
+}
+
 export default languages
