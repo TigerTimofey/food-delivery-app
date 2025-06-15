@@ -34,6 +34,24 @@
   margin-right: 32px;
 }
 
+.navbar-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.navbar-logo-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin-right: 0.2rem;
+  /* Optional: border for visibility */
+  border: 1.5px solid #eee;
+}
+
 .navbar-menu-wrapper {
   display: flex;
   align-items: center;

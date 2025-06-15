@@ -30,8 +30,16 @@ function Navbar({ lang, setLang, setPage }) {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <div className="navbar-logo" onClick={() => handleNav('home')} style={{ cursor: 'pointer' }}>
-          {business.brandName}
+        {/* Add logo circle image left of brand */}
+        <div className="navbar-logo-wrap">
+          <img
+            src="/img5.avif"
+            alt="Logo"
+            className="navbar-logo-img"
+          />
+          <div className="navbar-logo" onClick={() => handleNav('home')} style={{ cursor: 'pointer' }}>
+            {business.brandName}
+          </div>
         </div>
         <button
           className={`navbar-burger${menuOpen ? ' open' : ''}`}
