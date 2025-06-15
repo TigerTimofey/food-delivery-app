@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Navbar.css'
 import PersonalDropdown from '../../utils/dropdown-menu/PersonalDropdown'
 import languages from '../../data/languages'
@@ -8,6 +8,18 @@ function Navbar({ lang, setLang, setPage }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const words = languages[lang]
   const business = BUSINESS_DATA[0]
+
+  // Lock body scroll when menu is open (mobile)
+  useEffect(() => {
+    if (menuOpen && window.innerWidth <= 900) {
+      document.body.classList.add('navbar-lock-scroll')
+    } else {
+      document.body.classList.remove('navbar-lock-scroll')
+    }
+    return () => {
+      document.body.classList.remove('navbar-lock-scroll')
+    }
+  }, [menuOpen])
 
   // Helper to handle navigation
   const handleNav = (navKey) => {
