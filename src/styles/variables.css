@@ -1,5 +1,7 @@
 :root {
   --brand-color: #333;
+  --brand-color-medium: #666;
+  --brand-color-lignt: #888;
   --brand-font: 'Passion One', 'Mallanna', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --navbar-bg: #fff;
   --web-bg: #eaeaea;

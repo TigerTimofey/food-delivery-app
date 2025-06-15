@@ -9,7 +9,6 @@ function Navbar({ lang, setLang, setPage }) {
   const words = languages[lang]
   const business = BUSINESS_DATA[0]
 
-  // Lock body scroll when menu is open (mobile)
   useEffect(() => {
     if (menuOpen && window.innerWidth <= 900) {
       document.body.classList.add('navbar-lock-scroll')
@@ -21,7 +20,6 @@ function Navbar({ lang, setLang, setPage }) {
     }
   }, [menuOpen])
 
-  // Helper to handle navigation
   const handleNav = (navKey) => {
     setPage && setPage(navKey)
     setMenuOpen(false)
@@ -30,7 +28,6 @@ function Navbar({ lang, setLang, setPage }) {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        {/* Add logo circle image left of brand */}
         <div className="navbar-logo-wrap">
           <img
             src="/img5.avif"

@@ -1,28 +1,28 @@
 export const PRODUCTS = [
   {
-    img: "./img6.avif",
+    img: "/img6.avif",
     link: { href: "#", label: "Get started" }
   },
   {
-    img: "./img7.avif",
+    img: "/img7.avif",
     link: { href: "#" }
   },
   {
-    img: "./img2.avif",
+    img: "/img2.avif",
     link: { href: "#" }
   },
   {
-    img: "./img4.avif",
+    img: "/img4.avif",
     title: "Product 4",
     desc: "Description of product 4.",
     link: { href: "#" }
   },
   {
-    img: "./img8.avif",
+    img: "/img8.avif",
     link: { href: "#" }
   },
   {
-    img: "./img1.avif",
+    img: "/img1.avif",
     link: { href: "#" }
   }
 ];

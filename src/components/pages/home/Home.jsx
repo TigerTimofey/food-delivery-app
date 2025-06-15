@@ -109,7 +109,7 @@ function Home({ lang }) {
                   const el = document.querySelector('.home-cards-inner')
                   if (!el) return
                   const card = el.querySelector('.home-card')
-                  const cardWidth = card ? card.offsetWidth + 40 : 380 // 40px gap
+                  const cardWidth = card ? card.offsetWidth + 40 : 380 
                   el.scrollBy({ left: -cardWidth, behavior: 'smooth' })
                 }}
               >

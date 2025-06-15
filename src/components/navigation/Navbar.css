@@ -185,10 +185,9 @@ body.navbar-lock-scroll {
   box-shadow: 0 4px 16px rgba(80,220,100,0.13);
 }
 
-/* Floating scroll-to-top button for mobile, bottom right */
 .scroll-to-top-fab {
   position: fixed;
-  bottom: 1.2rem;
+  bottom: 1rem;
   right: 1.5rem;
   z-index: 1201;
   width: 48px;
@@ -231,6 +230,9 @@ body.navbar-lock-scroll {
 }
 
 @media (max-width: 768px) {
+  .scroll-to-top-fab{
+    margin-bottom: 0.8rem;
+  }
   .navbar-inner {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -357,7 +359,7 @@ body.navbar-lock-scroll {
   }
   .navbar-burger-address {
     font-size: 1rem;
-    color: #666;
+    color: var(--brand-color-medium);
   }
 }
 

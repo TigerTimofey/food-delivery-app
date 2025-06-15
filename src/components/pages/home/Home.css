@@ -41,7 +41,7 @@
 .home-desc {
   font-size: 1.2rem;
   font-family: var(--brand-font);
-  color: #666;
+  color: var(--brand-color-medium);
   margin-bottom: 0.5rem;
     padding: 0.8rem;
 }
@@ -115,7 +115,7 @@
 
 .home-services-desc {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--brand-color-medium);
   margin-top: 0rem;
   max-width: 600px;
   white-space: pre-line;
@@ -248,8 +248,8 @@
   align-self: flex-end;
 }
 .home-card-link:hover {
-  color:#fff;
-  background: var(--brand-button-hover);
+  color: #fff;
+  background: var(--brand-color-medium);
 }
 
 .home-cards-arrow {
