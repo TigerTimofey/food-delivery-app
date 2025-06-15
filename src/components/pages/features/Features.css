@@ -28,7 +28,6 @@
   margin: 0 auto;
   padding: 0 2vw;
   box-sizing: border-box;
-
 }
 
 .row.align-items-center {
@@ -36,12 +35,6 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-}
-
-.col-xl-6,
-.col-lg-6,
-.col-sm-6 {
-  all: unset;
 }
 
 .heading .eyebrow-2 {
@@ -60,7 +53,6 @@
   margin-bottom: 1.5rem;
   color: #fff;
   line-height: 1.1;
-  
 }
 
 .burgers h6 {
@@ -81,11 +73,11 @@
   background: #ffb347;
   color:var(--brand-color-dark);
   border-radius: 0.7rem;
-  padding: 0.7em 2em;
+  padding: 0.7em 2em;;
+  font-size: 1em;
   font-weight: 700;
   text-decoration: none;
   align-items: center;
-  gap: 0.7em;
   border: none;
   transition: background 0.18s, color 0.18s;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
@@ -97,6 +89,8 @@
 }
 
 .icon-wrapper {
+  margin-left: 0.2em;
+  font-size: 2rem;
   display: inline-flex;
   align-items: center;
   gap: 0.2em;
@@ -107,6 +101,13 @@
   height: 20px;
   display: inline-block;
   vertical-align: middle;
+  transition: transform 0.25s cubic-bezier(.4,0,.2,1), stroke 0.25s;
+}
+
+.cus-btn.dark:hover .icon-svg {
+  transform: translateX(6px) scale(1.08);
+  /* Optionally, animate stroke color: */
+  /* stroke: #f47134; */
 }
 
 .icon-svg-copy {
@@ -150,24 +151,48 @@
   justify-content: center;
 }
 
+.cus-btn.dark .btn-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  width: 100%;
+}
+
+.arrow-anim {
+  display: inline-block;
+  font-size: 1.2em;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  position: relative;
+  top: 1px;
+}
+
+.cus-btn.dark:hover .arrow-anim {
+  animation: arrow-left-right 0.5s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes arrow-left-right {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
 @media (max-width: 900px) {
   .row.align-items-center {
     flex-direction: column;
     gap: 2rem;
   }
 
-  .midnight-content
-  {
-        max-width: 350px;
-
+  .midnight-content {
+    max-width: 350px;
   }
 
   .midnight-banner-img-wrap {
     max-width: 250px;
     flex: 1 1 100%;
     padding: 0.7rem;
-  }
-  .midnight-banner-img-wrap {
     margin-top: 0;
     order: -1;
   }

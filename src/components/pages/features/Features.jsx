@@ -26,8 +26,6 @@ function Features({ lang = 'en' }) {
 
   return (
     <div className="features-container" style={{ marginTop: "4rem" }}>
-
-
       {/* Midnight Deals Section */}
       <section className="midnight-sec midnight-sec--features">
         <div className="container-fluid">
@@ -55,15 +53,10 @@ function Features({ lang = 'en' }) {
                 href="shop-grid-right-sidebar.html"
                 className="cus-btn dark midnight-order-btn"
               >
-                <span className="icon-wrapper">
-                  <svg className="icon-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M16.2522 11.9789C14.4658 10.1925 13.7513 6.14339 15.6567 4.23792M15.6567 4.23792C14.565 5.3296 11.4885 7.21521 7.91576 3.64246M15.6567 4.23792L4.34301 15.5516" stroke="#FCFDFD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                  </svg>
-                  <svg className="icon-svg icon-svg-copy" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M16.2522 11.9789C14.4658 10.1925 13.7513 6.14339 15.6567 4.23792M15.6567 4.23792C14.565 5.3296 11.4885 7.21521 7.91576 3.64246M15.6567 4.23792L4.34301 15.5516" stroke="#FCFDFD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                  </svg>
+                <span className="btn-content">
+                  {text.button}
+                  <span className="arrow-anim">&rarr;</span>
                 </span>
-                {text.button}
               </a>
             </div>
             <div className="midnight-banner-img-wrap">

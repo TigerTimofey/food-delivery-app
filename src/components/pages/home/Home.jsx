@@ -112,7 +112,7 @@ function Home({ lang }) {
                   el.scrollBy({ left: -cardWidth, behavior: 'smooth' })
                 }}
               >
-                &#8592;
+               &larr;
               </button>
               <button
                 className="home-cards-arrow home-cards-arrow-right"
@@ -126,7 +126,7 @@ function Home({ lang }) {
                   el.scrollBy({ left: cardWidth, behavior: 'smooth' })
                 }}
               >
-                &#8594;
+                &rarr;
               </button>
             </div>
           </div>
