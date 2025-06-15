@@ -1,4 +1,5 @@
 import { eeFlag, enFlag } from "../assets/flag-data"
+import { BUSINESS_DATA } from "./bussines-data"
 
 export const LANGUAGES = [
   { code: 'en', label: 'EN', flag: enFlag },
@@ -142,6 +143,53 @@ export const MIDNIGHT_DEALS_TEXT = {
        "Feature 6"
     ],
     button: "Võta ühendust"
+  }
+}
+
+export const TEAM_SECTION_TEXT = {
+  en: {
+    eyebrow: `— ${BUSINESS_DATA[0].brandName} Crew`,
+    title: "Our Dynamic <span className=\"team-title-highlight\">Fast Food Team</span>",
+    button: "Meet us",
+    members: [
+      {
+        name: "Ethan Rodriguez",
+        role: "Head Chef",
+        img: "/team/team1.png"
+      },
+      {
+        name: "Emily Brooks",
+        role: "Fry Chef",
+        img: "/team/team2.png"
+      },
+      {
+        name: "Megan Robinson",
+        role: "Waiter",
+        img: "/team/team3.png"
+      }
+    ]
+  },
+  et: {
+    eyebrow: `— ${BUSINESS_DATA[0].brandName} Meeskond`,
+    title: "Meie <span className=\"team-title-highlight\">kiirtoidu tiim</span>",
+    button: "Kohtu meiega",
+    members: [
+      {
+        name: "Ethan Rodriguez",
+        role: "Peakokk",
+        img: "/team/team1.png"
+      },
+      {
+        name: "Emily Brooks",
+        role: "Friikartuli kokk",
+        img: "/team/team2.png"
+      },
+      {
+        name: "Megan Robinson",
+        role: "Ettekandja",
+        img: "/team/team3.png"
+      }
+    ]
   }
 }
 

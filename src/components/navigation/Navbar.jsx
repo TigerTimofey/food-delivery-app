@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import PersonalDropdown from '../../utils/dropdown-menu/PersonalDropdown'
 import languages from '../../data/languages'
 import { BUSINESS_DATA } from '../../data/bussines-data'
 
-function Navbar({ lang, setLang, setPage }) {
+function Navbar({ lang, setLang }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const words = languages[lang]
   const business = BUSINESS_DATA[0]
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (menuOpen && window.innerWidth <= 900) {
@@ -21,13 +23,31 @@ function Navbar({ lang, setLang, setPage }) {
   }, [menuOpen])
 
   const handleNav = (navKey) => {
-    setPage && setPage(navKey)
+    let path = '/'
+    switch (navKey) {
+      case 'home':
+        path = '/'
+        break
+      case 'features':
+        path = '/features'
+        break
+      case 'pricing':
+        path = '/pricing'
+        break
+      case 'about':
+        path = '/about'
+        break
+      default:
+        path = '/'
+    }
+    navigate(path)
     setMenuOpen(false)
   }
 
   return (
     <nav className="navbar">
       <div className="navbar-inner">
+
         <div className="navbar-logo-wrap">
           <img
             src="/img5.avif"

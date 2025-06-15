@@ -8,7 +8,7 @@
 
 .midnight-sec {
   width: 100vw;
-  background: #f47134;
+  background: var(  --brand-orange-dark);
   color: #fff;
   padding: 3rem 0 3rem 0;
   margin: 0;
@@ -17,7 +17,7 @@
 }
 
 .midnight-sec--features {
-  background: url('/backgrounds/offer-bg.png') center top/cover no-repeat, #f47134;
+  background: url('/backgrounds/offer-bg.png') center top/cover no-repeat, var(  --brand-orange-dark);
   padding: 3rem 0 3rem 0;
   margin-bottom: 4rem;
 }
@@ -84,8 +84,7 @@
 }
 
 .cus-btn.dark:hover {
-  background: #f6a12c;
-  color: #181818;
+  background: var(--brand-orange-medium);
 }
 
 .icon-wrapper {
@@ -104,11 +103,6 @@
   transition: transform 0.25s cubic-bezier(.4,0,.2,1), stroke 0.25s;
 }
 
-.cus-btn.dark:hover .icon-svg {
-  transform: translateX(6px) scale(1.08);
-  /* Optionally, animate stroke color: */
-  /* stroke: #f47134; */
-}
 
 .icon-svg-copy {
   display: none;

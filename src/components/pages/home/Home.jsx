@@ -1,15 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './Home.css'
-import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT } from '../../../data/languages'
+import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT, TEAM_SECTION_TEXT } from '../../../data/languages'
 import img2 from '/img4.avif'
 import { PRODUCTS } from '../../../data/products-data'
+import { useNavigate } from 'react-router-dom'
 
 function Home({ lang }) {
   const text = HOME_TEXT[lang] || HOME_TEXT.en
   const productsText = PRODUCTS_SECTION_TEXT[lang] || PRODUCTS_SECTION_TEXT.en
   const productsLangArr = PRODUCTS_TEXT[lang] || PRODUCTS_TEXT.en
+  const teamText = TEAM_SECTION_TEXT[lang] || TEAM_SECTION_TEXT.en
   const [showScrollTop, setShowScrollTop] = useState(false)
   const bottomRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const nav = document.querySelector('.navbar, nav, .main-navbar')
@@ -80,7 +83,14 @@ function Home({ lang }) {
         </button>
       )}
       <div className="home-hero">
-        <h1 className="home-title">{text.title}</h1>
+        <div className="home-title-effect-wrap">
+          <h1 className="home-title">{text.title}</h1>
+          <img
+            src="/backgrounds/text-effect.png"
+            alt=""
+            className="home-title-effect-img"
+          />
+        </div>
         <div className="home-subtitle">
           {text.subtitle}
         </div>
@@ -89,13 +99,22 @@ function Home({ lang }) {
         </div>
       </div>
       <section className="home-img-section">
-        <img src={img2} alt="Bolt car" className="home-img-full" />
+        <img src={img2} alt="offer card" className="home-img-full" />
       </section>
 
+
+  {/* Desc & Buttons Product Section */}
       <section className="home-services-section">
         <div className="rt-ContainerInner">
           <div className="home-services-content">
-            <h2 className="home-title" style={{ whiteSpace: 'pre-line' }}>{productsText.title}</h2>
+            <div className="home-title-effect-wrap home-title-effect-wrap--products">
+              <h2 className="home-title" style={{ whiteSpace: 'pre-line' }}>{productsText.title}</h2>
+              <img
+                src="/backgrounds/text-effect.png"
+                alt=""
+                className="home-title-effect-img home-title-effect-img--products"
+              />
+            </div>
             <div className="home-services-desc">
               {productsText.desc}
             </div>
@@ -133,6 +152,7 @@ function Home({ lang }) {
         </div>
       </section>
 
+      {/* Cards Product Section */}
       <section className="home-cards-section">
         <div className="home-cards-container">
           <div className="home-cards-inner">
@@ -157,6 +177,40 @@ function Home({ lang }) {
         </div>
       </section>
       <div ref={bottomRef} style={{ height: 1 }} />
+
+      {/* Team Section */}
+      <section className="team-section">
+        <div className="team-container">
+          <div className="team-header">
+            <div className="team-heading">
+              <p className="team-eyebrow">{teamText.eyebrow}</p>
+              <h3 className="team-title" dangerouslySetInnerHTML={{ __html: teamText.title }} />
+            </div>
+            <button
+              type="button"
+              className="team-btn-main"
+              onClick={() => navigate('/about')}
+            >
+              <span className="btn-content">
+                <span className="team-title-highlight">{teamText.button}</span>
+              </span>
+            </button>
+          </div>
+          <div className="team-row">
+            {teamText.members.map((member, idx) => (
+              <div className="team-col" key={idx}>
+                <div className="team-card">
+                  <p  className="team-img-block">
+                    <img src={member.img} alt={member.name} />
+                  </p>
+                  <span className="team-member-name">{member.name}</span>
+                  <p className="team-member-role">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </section>
   )
 }

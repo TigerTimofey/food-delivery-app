@@ -4,6 +4,12 @@
   --brand-color-medium: #666;
   --brand-color-lignt: #888;
   --brand-color-white: #fff;
+
+  --brand-orange: #ffb347;
+  --brand-orange-dark:#f47134;
+  --brand-orange-medium: #f6a12c;
+
+
   --brand-font: 'Passion One', 'Mallanna', system-ui, Avenir, Helvetica, Arial, sans-serif;
    --brand-font-mallanna: 'Mallanna', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --navbar-bg: #fff;
