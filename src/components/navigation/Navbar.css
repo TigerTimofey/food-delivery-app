@@ -45,7 +45,7 @@
   height: 38px;
   border-radius: 50%;
   object-fit: cover;
-  background: #fff;
+  background: var(--navbar-bg);
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   margin-right: 0.2rem;
   /* Optional: border for visibility */
@@ -157,7 +157,7 @@ body.navbar-lock-scroll {
   z-index: 1201;
   width: 48px;
   height: 48px;
-  background: #fff;
+  background: var(--navbar-bg);
   border-radius: 50%;
   box-shadow: 0 2px 12px rgba(0,0,0,0.10);
   display: flex;
@@ -192,7 +192,7 @@ body.navbar-lock-scroll {
   z-index: 1201;
   width: 48px;
   height: 48px;
-  background: #fff;
+  background: var(--navbar-bg);
   border-radius: 50%;
   box-shadow: 0 2px 12px rgba(0,0,0,0.10);
   display: flex;
@@ -249,7 +249,7 @@ body.navbar-lock-scroll {
     height: 100vh;
     width: 100vw;
     max-width: 400px;
-    background: #fff;
+    background: var(--navbar-bg);
     box-shadow: -2px 0 16px rgba(0,0,0,0.10);
     gap: 1rem;
     z-index: 1100;

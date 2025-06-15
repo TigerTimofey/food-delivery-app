@@ -31,7 +31,7 @@
   left: 40%;
   top: 2.5em;
   transform: translateX(-50%);
-  background: #fff;
+  background: var(--navbar-bg);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border-radius: 0 0 8px 8px;
   list-style: none;
@@ -57,7 +57,7 @@
 .personal-dropdown-menu li {
   padding: 0.5em 1em;
   cursor: pointer;
-  color: black;
+  color: var(--brand-color);
   transition: background 0.15s, border-radius 0.15s, border-bottom 0.15s;
   font-family: var(--brand-font);
   border-radius: 0 0 8px 8px;
