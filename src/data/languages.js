@@ -8,7 +8,7 @@ export const LANGUAGES = [
 const languages = {
   en: {
     home: "Home",
-    features: "Product",
+    features: "Products",
     pricing: "Pricing",
     about: "About",
     languages: enFlag

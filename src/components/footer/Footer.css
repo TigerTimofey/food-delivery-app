@@ -46,7 +46,8 @@
 .footer-copyright {
   font-size: 1.1rem;
   color: var(--brand-color-lignt);
-  font-family: var(--brand-font);
+  font-family: 'Mallanna', var(--brand-font), sans-serif;
+  font-weight: var(--font-weight-semibold);
 }
 
 @media (max-width: 700px) {
