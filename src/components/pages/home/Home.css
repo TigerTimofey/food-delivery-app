@@ -192,9 +192,9 @@
 }
 
 .home-cards-container {
-  max-width: 1400px;
+  /* max-width: 1400px; */
   margin: 0 auto;
-  padding: 0 1vw;
+  padding: 2rem;
   overflow-x: hidden; 
 }
 
@@ -359,6 +359,9 @@
 }
 
 @media (max-width: 900px) {
+   .home-cards-container {
+    padding: 0 1vw;
+  }
   .home-card {
     flex: 0 0 80vw;
     max-width: 90vw;
@@ -377,6 +380,9 @@
 }
 
 @media (max-width: 600px) {
+  .home-cards-container {
+    padding: 0 1vw;
+  }
   .home-card-img{
     height: 100%;
   }
@@ -633,4 +639,5 @@
   will-change: transform;
   position: relative;
   top: 1px;
+  font-family: var(--brand-font);
 }

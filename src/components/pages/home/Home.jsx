@@ -193,6 +193,7 @@ function Home({ lang }) {
             >
               <span className="btn-content">
                 <span className="team-title-highlight">{teamText.button}</span>
+                        <span className="arrow-anim">&rarr;</span>
               </span>
             </button>
           </div>
