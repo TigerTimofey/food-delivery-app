@@ -129,7 +129,7 @@ export const MIDNIGHT_DEALS_TEXT = {
        "Feature 6"
       
     ],
-    button: "Contact us"
+    button: "Offers & products"
   },
   et: {
     eyebrow: "— nädala pakkumised",
@@ -142,7 +142,7 @@ export const MIDNIGHT_DEALS_TEXT = {
       "Feature 5",
        "Feature 6"
     ],
-    button: "Võta ühendust"
+    button: "Pakkumised & tooted"
   }
 }
 

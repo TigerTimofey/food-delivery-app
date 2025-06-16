@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './Home.css'
-import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT, TEAM_SECTION_TEXT } from '../../../data/languages'
-import img2 from '/img4.avif'
+import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT, TEAM_SECTION_TEXT, MIDNIGHT_DEALS_TEXT } from '../../../data/languages'
+// import img2 from '/img4.avif'
 import { PRODUCTS } from '../../../data/products-data'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,6 +10,7 @@ function Home({ lang }) {
   const productsText = PRODUCTS_SECTION_TEXT[lang] || PRODUCTS_SECTION_TEXT.en
   const productsLangArr = PRODUCTS_TEXT[lang] || PRODUCTS_TEXT.en
   const teamText = TEAM_SECTION_TEXT[lang] || TEAM_SECTION_TEXT.en
+  const midnightText = MIDNIGHT_DEALS_TEXT[lang] || MIDNIGHT_DEALS_TEXT.en
   const [showScrollTop, setShowScrollTop] = useState(false)
   const bottomRef = useRef(null)
   const navigate = useNavigate()
@@ -99,11 +100,50 @@ function Home({ lang }) {
         </div>
       </div>
       <section className="home-img-section">
-        <img src={img2} alt="offer card" className="home-img-full" />
+        {/* <img src={img2} alt="offer card" className="home-img-full" /> */}
       </section>
 
+      {/* Midnight Deals Section - moved from Features */}
+      <section className="midnight-sec midnight-sec--features">
+        <div className="container-fluid">
+          <div className="row align-items-center">
+            <div className="midnight-content">
+              <div className="heading">
+                <p className="eyebrow-2">{midnightText.eyebrow}</p>
+                <h3 className="title-3">
+                  {midnightText.title.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      {i < midnightText.title.split('\n').length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                </h3>
+              </div>
+              <div className="midnight-deals-list">
+                {midnightText.items.map((item, idx) => (
+                  <div className="burgers" key={idx}>
+                    <h6>{item}</h6>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="/features"
+                className="cus-btn dark midnight-order-btn"
+              >
+                <span className="btn-content">
+                  {midnightText.button}
+                  <span className="arrow-anim">&rarr;</span>
+                </span>
+              </a>
+            </div>
+            <div className="midnight-banner-img-wrap">
+              <img src="/backgrounds/offer.png" alt="" className="title-bg-vec" />
+            </div>
+          </div>
+        </div>
+      </section>
 
-  {/* Desc & Buttons Product Section */}
+      {/* Desc & Buttons Product Section */}
       <section className="home-services-section">
         <div className="rt-ContainerInner">
           <div className="home-services-content">
@@ -151,6 +191,8 @@ function Home({ lang }) {
           </div>
         </div>
       </section>
+
+      
 
       {/* Cards Product Section */}
       <section className="home-cards-section">
