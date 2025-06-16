@@ -14,6 +14,9 @@ function Home({ lang }) {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const bottomRef = useRef(null)
   const navigate = useNavigate()
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(false)
+  const cardsInnerRef = useRef(null)
 
   useEffect(() => {
     const nav = document.querySelector('.navbar, nav, .main-navbar')
@@ -62,6 +65,26 @@ function Home({ lang }) {
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
+  // Update scroll arrow state
+  useEffect(() => {
+    function updateScrollButtons() {
+      const el = cardsInnerRef.current
+      if (!el) return
+      setCanScrollLeft(el.scrollLeft > 0)
+      setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1)
+    }
+    updateScrollButtons()
+    const el = cardsInnerRef.current
+    if (el) {
+      el.addEventListener('scroll', updateScrollButtons)
+      window.addEventListener('resize', updateScrollButtons)
+    }
+    return () => {
+      if (el) el.removeEventListener('scroll', updateScrollButtons)
+      window.removeEventListener('resize', updateScrollButtons)
     }
   }, [])
 
@@ -158,36 +181,6 @@ function Home({ lang }) {
             <div className="home-services-desc">
               {productsText.desc}
             </div>
-            <div className="home-services-arrows-inline">
-              <button
-                className="home-cards-arrow home-cards-arrow-left"
-                aria-label="Scroll left"
-                type="button"
-                onClick={() => {
-                  const el = document.querySelector('.home-cards-inner')
-                  if (!el) return
-                  const card = el.querySelector('.home-card')
-                  const cardWidth = card ? card.offsetWidth + 40 : 380 
-                  el.scrollBy({ left: -cardWidth, behavior: 'smooth' })
-                }}
-              >
-               &larr;
-              </button>
-              <button
-                className="home-cards-arrow home-cards-arrow-right"
-                aria-label="Scroll right"
-                type="button"
-                onClick={() => {
-                  const el = document.querySelector('.home-cards-inner')
-                  if (!el) return
-                  const card = el.querySelector('.home-card')
-                  const cardWidth = card ? card.offsetWidth + 40 : 380 
-                  el.scrollBy({ left: cardWidth, behavior: 'smooth' })
-                }}
-              >
-                &rarr;
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -197,7 +190,10 @@ function Home({ lang }) {
       {/* Cards Product Section */}
       <section className="home-cards-section">
         <div className="home-cards-container">
-          <div className="home-cards-inner">
+          <div
+            className="home-cards-inner"
+            ref={cardsInnerRef}
+          >
             {PRODUCTS.map((card, idx) => {
               const langData = productsLangArr[idx] || {}
               return (
@@ -216,6 +212,41 @@ function Home({ lang }) {
               )
             })}
           </div>
+        </div>
+        {/* Move arrows here to ensure they are always rendered */}
+        <div className="home-services-arrows-inline">
+          <button
+            className="home-cards-arrow home-cards-arrow-left"
+            aria-label="Scroll left"
+            type="button"
+            onClick={() => {
+              const el = cardsInnerRef.current
+              if (!el) return
+              const card = el.querySelector('.home-card')
+              const cardWidth = card ? card.offsetWidth + 40 : 380
+              el.scrollBy({ left: -cardWidth, behavior: 'smooth' })
+            }}
+            disabled={!canScrollLeft}
+            style={{ opacity: canScrollLeft ? 1 : 0.4, pointerEvents: canScrollLeft ? 'auto' : 'none' }}
+          >
+            &larr;
+          </button>
+          <button
+            className="home-cards-arrow home-cards-arrow-right"
+            aria-label="Scroll right"
+            type="button"
+            onClick={() => {
+              const el = cardsInnerRef.current
+              if (!el) return
+              const card = el.querySelector('.home-card')
+              const cardWidth = card ? card.offsetWidth + 40 : 380
+              el.scrollBy({ left: cardWidth, behavior: 'smooth' })
+            }}
+            disabled={!canScrollRight}
+            style={{ opacity: canScrollRight ? 1 : 0.4, pointerEvents: canScrollRight ? 'auto' : 'none' }}
+          >
+            &rarr;
+          </button>
         </div>
       </section>
       <div ref={bottomRef} style={{ height: 1 }} />

@@ -119,6 +119,9 @@
   }
 }
 @media (max-width: 900px) {
+  .home-title-effect-img {
+    top: 5px
+  }
   .home-container,
   .home-hero,
   .home-img-section {
@@ -317,6 +320,12 @@
   margin-top: 1rem;
 }
 
+.home-cards-arrow:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: default;
+}
+
 
 
 .home-cards-arrow:before {
@@ -483,6 +492,7 @@
   gap: 0.5em;
   margin-bottom: 0.3em;
   margin-right: 0.4em;
+  cursor: pointer;
 }
 
 .team-btn-main:hover {
@@ -495,6 +505,7 @@
   justify-content: center;
   gap: 0.5em;
   width: 100%;
+
 }
 
 .team-btn-main:hover .arrow-anim {

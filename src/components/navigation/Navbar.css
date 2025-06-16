@@ -26,7 +26,7 @@
 .navbar-logo {
   font-weight: bold;
   font-size: 1.5rem;
-  color: var(--brand-color);
+  color: var(--brand-orange-dark);
   font-family: var(--brand-font);
   flex: 0 0 auto;
   display: flex;
@@ -73,6 +73,10 @@
   justify-content: flex-start;
   align-items: center;
   color: var(--brand-color);
+}
+
+.navbar-menu li a {
+  cursor: pointer;
 }
 
 .navbar-lang {

@@ -149,7 +149,7 @@ export const MIDNIGHT_DEALS_TEXT = {
 export const TEAM_SECTION_TEXT = {
   en: {
     eyebrow: `— ${BUSINESS_DATA[0].brandName} Crew`,
-    title: "Our Dynamic <span className=\"team-title-highlight\">Fast Food Team</span>",
+    title: `Hey! It's a ${BUSINESS_DATA[0].brandName} Team</span>`,
     button: "Meet us",
     members: [
       {
@@ -171,7 +171,7 @@ export const TEAM_SECTION_TEXT = {
   },
   et: {
     eyebrow: `— ${BUSINESS_DATA[0].brandName} Meeskond`,
-    title: "Meie <span className=\"team-title-highlight\">kiirtoidu tiim</span>",
+    title: `Hei! See on ${BUSINESS_DATA[0].brandName} tiim</span>`,
     button: "Kohtu meiega",
     members: [
       {

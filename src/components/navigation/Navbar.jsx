@@ -77,10 +77,10 @@ function Navbar({ lang, setLang }) {
             </>
           )}
           <ul className={`navbar-menu${menuOpen ? ' open' : ''}`}>
-            <li><a href="#" onClick={() => handleNav('home')}>{words.home}</a></li>
-            <li><a href="#" onClick={() => handleNav('features')}>{words.features}</a></li>
-            <li><a href="#" onClick={() => handleNav('pricing')}>{words.pricing}</a></li>
-            <li><a href="#" onClick={() => handleNav('about')}>{words.about}</a></li>
+            <li><a onClick={() => handleNav('home')}>{words.home}</a></li>
+            <li><a onClick={() => handleNav('features')}>{words.features}</a></li>
+            <li><a onClick={() => handleNav('pricing')}>{words.pricing}</a></li>
+            <li><a onClick={() => handleNav('about')}>{words.about}</a></li>
             {menuOpen && (
               <li>
                 <div className="navbar-lang">
