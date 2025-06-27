@@ -274,7 +274,7 @@
   display: flex;
   gap: 0.7rem;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   margin-top: auto;
 }
@@ -293,6 +293,9 @@
   align-self: flex-end;
   border: none;
   cursor: pointer;
+  order: 1;
+  margin-left: 0;
+  margin-right: auto;
 }
 .features-card-link:hover {
   color: var(--brand-color-white);
@@ -311,6 +314,9 @@
   border: none;
   cursor: pointer;
   transition: background 0.18s;
+  order: 2;
+  margin-left: auto;
+  margin-right: 0;
 }
 .features-card-add-btn:hover {
   background: var(--brand-orange-medium);
