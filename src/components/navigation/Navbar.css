@@ -212,7 +212,7 @@ body.navbar-lock-scroll {
 
 .scroll-to-top-fab {
   position: fixed;
-  bottom: 1rem;
+  bottom: .7rem;
   right: 1.5rem;
   z-index: 1201;
   width: 48px;

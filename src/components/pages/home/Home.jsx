@@ -11,7 +11,7 @@ function Home({ lang }) {
   const productsLangArr = PRODUCTS_TEXT[lang] || PRODUCTS_TEXT.en
   const teamText = TEAM_SECTION_TEXT[lang] || TEAM_SECTION_TEXT.en
   const midnightText = MIDNIGHT_DEALS_TEXT[lang] || MIDNIGHT_DEALS_TEXT.en
-  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [, setShowScrollTop] = useState(false)
   const bottomRef = useRef(null)
   const navigate = useNavigate()
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -56,7 +56,12 @@ function Home({ lang }) {
     function handleScroll() {
       if (!bottomRef.current) return
       const rect = bottomRef.current.getBoundingClientRect()
-
+      // Show when bottomRef is visible in viewport (bottom of page)
+      if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+        document.body.classList.add('show-scroll-top')
+      } else {
+        document.body.classList.remove('show-scroll-top')
+      }
       setShowScrollTop(rect.top <= window.innerHeight && rect.bottom >= 0)
     }
     window.addEventListener('scroll', handleScroll)
@@ -65,6 +70,7 @@ function Home({ lang }) {
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
+      document.body.classList.remove('show-scroll-top')
     }
   }, [])
 
@@ -90,22 +96,19 @@ function Home({ lang }) {
 
   return (
     <section className="home-container">
-
-      {showScrollTop && (
-        <button
-          className="scroll-to-top-fab"
-          aria-label="Scroll to top"
-          onClick={e => {
-            e.preventDefault()
-            e.stopPropagation()
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
-        >
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 6l-7 7h4v5h6v-5h4l-7-7z" fill="currentColor"/>
-          </svg>
-        </button>
-      )}
+      <button
+        className="scroll-to-top-fab"
+        aria-label="Scroll to top"
+        onClick={e => {
+          e.preventDefault()
+          e.stopPropagation()
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }}
+      >
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 6l-7 7h4v5h6v-5h4l-7-7z" fill="currentColor"/>
+        </svg>
+      </button>
       <div className="home-hero">
         <div className="home-title-effect-wrap">
           <h1 className="home-title">{text.title}</h1>
