@@ -1,28 +1,29 @@
 export const PRODUCTS = [
   {
-    img: "/img6.avif",
-    link: { href: "#", label: "Get started" }
+    img: "/categories/burger.avif",
+    link: { href: "/features",}
   },
   {
-    img: "/img7.avif",
-    link: { href: "#" }
+    img: "/categories/soup.avif",
+    link: { href: "/features" }
   },
   {
-    img: "/img2.avif",
-    link: { href: "#" }
+    img: "/categories/wok.avif",
+    link: { href: "/features" }
   },
   {
-    img: "/img4.avif",
+    img: "/categories/dessert.avif",
     title: "Product 4",
     desc: "Description of product 4.",
-    link: { href: "#" }
+    link: { href: "/features" }
   },
   {
-    img: "/img8.avif",
-    link: { href: "#" }
+    img: "/categories/drinks.avif",
+    link: { href: "/features" }
   },
   {
-    img: "/img1.avif",
-    link: { href: "#" }
+    img: "/categories/hot_drinks.avif",
+    link: { href: "/features" }
   }
 ];
+

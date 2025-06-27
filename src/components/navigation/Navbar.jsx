@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import PersonalDropdown from '../../utils/dropdown-menu/PersonalDropdown'
 import languages from '../../data/languages'
@@ -10,6 +10,16 @@ function Navbar({ lang, setLang }) {
   const words = languages[lang]
   const business = BUSINESS_DATA[0]
   const navigate = useNavigate()
+  const location = useLocation()
+
+  // Determine active nav item by path
+  const getActiveKey = () => {
+    if (location.pathname.startsWith('/features')) return 'features'
+    if (location.pathname.startsWith('/pricing')) return 'pricing'
+    if (location.pathname.startsWith('/about')) return 'about'
+    return 'home'
+  }
+  const activeKey = getActiveKey()
 
   useEffect(() => {
     if (menuOpen && window.innerWidth <= 900) {
@@ -77,10 +87,18 @@ function Navbar({ lang, setLang }) {
             </>
           )}
           <ul className={`navbar-menu${menuOpen ? ' open' : ''}`}>
-            <li><a onClick={() => handleNav('home')}>{words.home}</a></li>
-            <li><a onClick={() => handleNav('features')}>{words.features}</a></li>
-            <li><a onClick={() => handleNav('pricing')}>{words.pricing}</a></li>
-            <li><a onClick={() => handleNav('about')}>{words.about}</a></li>
+            <li className={activeKey === 'home' ? 'active' : ''}>
+              <a onClick={() => handleNav('home')} className={activeKey === 'home' ? 'active' : ''}>{words.home}</a>
+            </li>
+            <li className={activeKey === 'features' ? 'active' : ''}>
+              <a onClick={() => handleNav('features')} className={activeKey === 'features' ? 'active' : ''}>{words.features}</a>
+            </li>
+            <li className={activeKey === 'pricing' ? 'active' : ''}>
+              <a onClick={() => handleNav('pricing')} className={activeKey === 'pricing' ? 'active' : ''}>{words.pricing}</a>
+            </li>
+            <li className={activeKey === 'about' ? 'active' : ''}>
+              <a onClick={() => handleNav('about')} className={activeKey === 'about' ? 'active' : ''}>{words.about}</a>
+            </li>
             {menuOpen && (
               <li>
                 <div className="navbar-lang">

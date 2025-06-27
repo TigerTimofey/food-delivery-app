@@ -204,7 +204,16 @@ function Home({ lang }) {
                   <div className="home-card-content">
                     <h3 className="home-card-title">{langData.title}</h3>
                     <p className="home-card-desc">{langData.desc}</p>
-                    <a className="home-card-link" href={card.link?.href || card.href || "#"} target="_blank" rel="noopener noreferrer">
+                    <a
+                      className="home-card-link"
+                      href={card.link?.href || card.href || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={e => {
+                        e.preventDefault()
+                        navigate('/features', { state: { categoryIdx: idx } })
+                      }}
+                    >
                       {langData.label}
                     </a>
                   </div>

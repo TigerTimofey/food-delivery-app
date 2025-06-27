@@ -77,6 +77,27 @@
 
 .navbar-menu li a {
   cursor: pointer;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.18s;
+}
+
+.navbar-menu li.active > a,
+.navbar-menu li a.active {
+  color: var(--brand-orange-dark);
+}
+
+.navbar-menu li.active > a::after,
+.navbar-menu li a.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--brand-orange-dark);
+  width: 100%;
+  transition: background 0.18s;
 }
 
 .navbar-lang {
