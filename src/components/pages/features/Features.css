@@ -167,8 +167,10 @@
   overflow-x: auto;
   padding-bottom: 2.5rem;
   position: relative;
-  padding-left: 3vw;
-  padding-right: 3vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  /* add right space for arrows/scroll */
+  box-sizing: border-box;
 }
 
 @media (max-width: 900px) {
