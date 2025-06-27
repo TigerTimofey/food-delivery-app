@@ -294,4 +294,17 @@ export const CATEGORY_ITEMS_TEXT = {
   }
 }
 
+export const CATEGORY_KEYS = ['burgers', 'soups', 'woks', 'desserts', 'drinks', 'hot_drinks']
+
+export const BUTTON_TEXT = {
+  en: {
+    details: "Product details",
+    add: "Add to cart"
+  },
+  et: {
+    details: "Toote info",
+    add: "Lisa korvi"
+  }
+}
+
 export default languages

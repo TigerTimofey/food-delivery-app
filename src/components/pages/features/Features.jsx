@@ -1,14 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
 import './Features.css'
-import { PRODUCTS_TEXT, CATEGORY_ITEMS_TEXT } from '../../../data/languages'
+import { PRODUCTS_TEXT, CATEGORY_ITEMS_TEXT, CATEGORY_KEYS, BUTTON_TEXT } from '../../../data/languages'
 import { PRODUCTS } from '../../../data/products-data'
 import { useLocation } from 'react-router-dom'
+import ProdModal from './prod-modal/prodModal'
 
-
-// Helper to map category index to key
-const CATEGORY_KEYS = ['burgers', 'soups', 'woks', 'desserts', 'drinks', 'hot_drinks']
-
-function CategorySlider({ title, img, items, sectionRef }) {
+function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }) {
   const cardsInnerRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
@@ -47,9 +44,21 @@ function CategorySlider({ title, img, items, sectionRef }) {
               <div className="features-card-content">
                 <h3 className="features-card-title">{item.title}</h3>
                 <p className="features-card-desc">{item.desc}</p>
-                <a className="features-card-link" href="#" target="_blank" rel="noopener noreferrer">
-                  {item.label}
-                </a>
+                <div className="features-card-actions">
+                  <button
+                    className="features-card-link"
+                    type="button"
+                    onClick={() => onDetails({ ...item, img })}
+                  >
+                    {buttonText.details}
+                  </button>
+                  <button
+                    className="features-card-add-btn"
+                    type="button"
+                  >
+                    {buttonText.add}
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -97,6 +106,9 @@ function Features({ lang = 'en' }) {
   const categoriesLangArr = PRODUCTS_TEXT[lang] || PRODUCTS_TEXT.en
   const location = useLocation()
   const categoryRefs = useRef(PRODUCTS.map(() => React.createRef()))
+  const buttonText = BUTTON_TEXT[lang] || BUTTON_TEXT.en
+
+  const [modalData, setModalData] = useState(null)
 
   useEffect(() => {
     return () => {
@@ -127,9 +139,18 @@ function Features({ lang = 'en' }) {
             img={cat.img}
             items={items}
             sectionRef={categoryRefs.current[idx]}
+            buttonText={buttonText}
+            onDetails={setModalData}
           />
         )
       })}
+      {modalData && (
+        <ProdModal
+          open={!!modalData}
+          data={modalData}
+          onClose={() => setModalData(null)}
+        />
+      )}
     </div>
   )
 }

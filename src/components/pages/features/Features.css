@@ -236,6 +236,13 @@
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+  transition: transform 0.25s;
+}
+
+.features-card-scroll:hover .features-card-img,
+.features-card-scroll:focus-within .features-card-img {
+  transform: scale(1.07);
+  transition: transform 0.25s;
 }
 
 .features-card-content {
@@ -263,6 +270,15 @@
   text-align: left;
 }
 
+.features-card-actions {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: auto;
+}
+
 .features-card-link {
   display: inline-block;
   font-size: 1.1rem;
@@ -273,13 +289,32 @@
   font-family: var(--brand-font);
   font-weight: 200;
   text-decoration: none;
-  margin-top: auto;
   transition: background 0.18s;
   align-self: flex-end;
+  border: none;
+  cursor: pointer;
 }
 .features-card-link:hover {
   color: var(--brand-color-white);
   background: var(--brand-color-medium);
+}
+
+.features-card-add-btn {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: var(--brand-color-white);
+  background: var(--brand-orange-dark);
+  border-radius: 0.7rem;
+  padding: 0.3em 1em;
+  font-family: var(--brand-font);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.features-card-add-btn:hover {
+  background: var(--brand-orange-medium);
+  color: var(--brand-color-white);
 }
 
 .features-cards-arrows-inline {
