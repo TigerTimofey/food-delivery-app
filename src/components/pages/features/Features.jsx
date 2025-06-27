@@ -32,7 +32,14 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }
   return (
     <section className="features-products-section" ref={sectionRef}>
       <div className="features-products-header">
-        <h2 className="features-title">{title}</h2>
+        <div className="features-title-effect-wrap">
+          <h2 className="features-title">{title}</h2>
+          <img
+            src="/backgrounds/text-effect.png"
+            alt=""
+            className="features-title-effect-img"
+          />
+        </div>
       </div>
       <div className="features-cards-scroll-container">
         <div className="features-cards-scroll-inner" ref={cardsInnerRef}>
