@@ -128,7 +128,8 @@ function Features({ lang = 'en' }) {
       const idx = location.state.categoryIdx
       const ref = categoryRefs.current[idx]
       if (ref && ref.current) {
-        ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const top = ref.current.getBoundingClientRect().top + window.scrollY - 60
+        window.scrollTo({ top, behavior: 'smooth' })
       }
     }
   }, [location])
