@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import './prodModal.css'
 
 function ProdModal({ open, data, onClose }) {
-  // Trap focus and close on ESC
   useEffect(() => {
     if (!open) return
     function onKeyDown(e) {
@@ -24,7 +23,6 @@ function ProdModal({ open, data, onClose }) {
         <div className="prod-modal-content">
           <h2 className="prod-modal-title">{data.title}</h2>
           <p className="prod-modal-desc">{data.desc}</p>
-          {/* Example: Add more info here if needed */}
           <div className="prod-modal-actions">
             <button
               className="prod-modal-add-btn"
