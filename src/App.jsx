@@ -11,6 +11,46 @@ import Footer from './components/footer/Footer'
 function App() {
   const [lang, setLang] = useState('en')
   const [showFooter, setShowFooter] = useState(false)
+  const [cartItems, setCartItems] = useState([])
+
+  // Cart management functions
+  const addToCart = (item, quantity = 1) => {
+    setCartItems(currentItems => {
+      const existingItem = currentItems.find(cartItem => cartItem.title === item.title)
+      
+      if (existingItem) {
+        // Update quantity if item already exists
+        return currentItems.map(cartItem =>
+          cartItem.title === item.title
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
+            : cartItem
+        )
+      } else {
+        // Add new item to cart
+        return [...currentItems, { ...item, quantity }]
+      }
+    })
+  }
+
+  const removeFromCart = (index) => {
+    setCartItems(currentItems => currentItems.filter((_, i) => i !== index))
+  }
+
+  const updateCartQuantity = (index, newQuantity) => {
+    if (newQuantity <= 0) {
+      removeFromCart(index)
+    } else {
+      setCartItems(currentItems =>
+        currentItems.map((item, i) =>
+          i === index ? { ...item, quantity: newQuantity } : item
+        )
+      )
+    }
+  }
+
+  const clearCart = () => {
+    setCartItems([])
+  }
 
   useEffect(() => {
     function onScroll() {
@@ -22,10 +62,17 @@ function App() {
 
   return (
     <>
-      <Navbar lang={lang} setLang={setLang} />
+      <Navbar 
+        lang={lang} 
+        setLang={setLang} 
+        cartItems={cartItems}
+        onRemoveFromCart={removeFromCart}
+        onUpdateCartQuantity={updateCartQuantity}
+        onClearCart={clearCart}
+      />
       <Routes>
         <Route path="/" element={<Home lang={lang} />} />
-        <Route path="/features" element={<Features lang={lang} />} />
+        <Route path="/features" element={<Features lang={lang} onAddToCart={addToCart} />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/about" element={<About />} />
       </Routes>

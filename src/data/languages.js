@@ -307,4 +307,31 @@ export const BUTTON_TEXT = {
   }
 }
 
+export const CART_TEXT = {
+  en: {
+    title: "Shopping Cart",
+    empty: "Your cart is empty",
+    subtotal: "Subtotal (excl. tax)",
+    tax: "Tax",
+    total: "Total (incl. tax)",
+    clearCart: "Clear Cart",
+    checkout: "Checkout",
+    removeItem: "Remove item",
+    increase: "Increase",
+    decrease: "Decrease"
+  },
+  et: {
+    title: "Ostukorv",
+    empty: "Teie ostukorv on tühi",
+    subtotal: "Vahesumma (Km-ta)",
+    tax: "Käibemaks",
+    total: "Kokku",
+    clearCart: "Tühjenda korv",
+    checkout: "Maksa",
+    removeItem: "Eemalda toode",
+    increase: "Suurenda",
+    decrease: "Vähenda"
+  }
+}
+
 export default languages

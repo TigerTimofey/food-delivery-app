@@ -48,7 +48,6 @@
   background: var(--navbar-bg);
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   margin-right: 0.2rem;
-  /* Optional: border for visibility */
   border: 1.5px solid #eee;
 }
 
@@ -105,7 +104,7 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   justify-content: flex-end;
 }
 
@@ -161,7 +160,6 @@
   display: none;
 }
 
-/* Prevent ALL scrolling when burger/nav menu is open */
 body.navbar-lock-scroll {
   overflow: hidden !important;
   position: fixed !important;
@@ -174,7 +172,6 @@ body.navbar-lock-scroll {
   touch-action: none !important;
 }
 
-/* Floating burger menu button for mobile, always on screen when nav is hidden */
 .mobile-burger-fab {
   position: fixed;
   top: 1.1rem;
@@ -195,7 +192,6 @@ body.navbar-lock-scroll {
   padding: 0;
 }
 
-/* Move the button even higher when nav is hidden */
 .mobile-burger-fab-top {
   top: 0.3rem;
 }
@@ -238,6 +234,104 @@ body.navbar-lock-scroll {
 
 .scroll-to-top-fab:active {
   box-shadow: 0 4px 16px rgba(80,220,100,0.13);
+}
+
+.navbar-floating-cart {
+  position: fixed;
+  top: 80px; 
+  right: 20px;
+  z-index: 1001;
+  display: none; 
+}
+
+.navbar-floating-cart .shopping-cart.floating {
+  position: relative;
+}
+
+.navbar-floating-cart .cart-toggle-btn.floating {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--brand-orange-dark);
+}
+
+.navbar-floating-cart .cart-toggle-btn.floating:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-floating-cart .cart-toggle-btn.floating svg {
+  width: 24px;
+  height: 24px;
+}
+
+.navbar-floating-cart .cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--brand-orange-dark);
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+.navbar-floating-cart .cart-dropdown {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  width: 350px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  z-index: 1002;
+}
+
+@media (max-width: 768px) {
+  .navbar-floating-cart {
+    display: block; 
+    top: 110px;
+    right: 8px;
+  }
+
+  
+  .navbar-floating-cart .cart-toggle-btn.floating {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .navbar-floating-cart .cart-toggle-btn.floating svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .navbar-floating-cart .cart-dropdown {
+    width: calc(100vw - 30px);
+    right: -15px;
+    top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-floating-cart .cart-dropdown {
+    width: calc(100vw - 20px);
+    right: -10px;
+  }
 }
 
 @media (max-width: 900px) {

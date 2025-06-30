@@ -5,7 +5,7 @@ import { PRODUCTS } from '../../../data/products-data'
 import { useLocation } from 'react-router-dom'
 import ProdModal from './prod-modal/prodModal'
 
-function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }) {
+function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails, onAddToCart }) {
   const cardsInnerRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
@@ -126,6 +126,16 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }
                       // Console log the total amount
                       console.log(`Total amount: ${totalAmount.toFixed(2)} € (${quantity} x ${price} €)`);
                       
+                      // Add to cart
+                      if (onAddToCart) {
+                        onAddToCart({
+                          title: item.title,
+                          desc: item.desc,
+                          price: price,
+                          img: img
+                        }, quantity);
+                      }
+                      
                       // Reset counter to 1
                       handleCounter(idx, 1 - counters[idx]);
                     }}
@@ -176,7 +186,7 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }
   )
 }
 
-function Features({ lang = 'en' }) {
+function Features({ lang = 'en', onAddToCart }) {
   const categoriesLangArr = PRODUCTS_TEXT[lang] || PRODUCTS_TEXT.en
   const location = useLocation()
   const categoryRefs = useRef(PRODUCTS.map(() => React.createRef()))
@@ -216,6 +226,7 @@ function Features({ lang = 'en' }) {
             sectionRef={categoryRefs.current[idx]}
             buttonText={buttonText}
             onDetails={setModalData}
+            onAddToCart={onAddToCart}
           />
         )
       })}

@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import PersonalDropdown from '../../utils/dropdown-menu/PersonalDropdown'
+import ShoppingCart from '../shopping/ShoppingCart'
 import languages from '../../data/languages'
 import { BUSINESS_DATA } from '../../data/bussines-data'
 
-function Navbar({ lang, setLang }) {
+function Navbar({ lang, setLang, cartItems, onRemoveFromCart, onUpdateCartQuantity, onClearCart }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const words = languages[lang]
   const business = BUSINESS_DATA[0]
@@ -111,6 +112,13 @@ function Navbar({ lang, setLang }) {
           {!menuOpen && (
             <div className="navbar-lang">
               <PersonalDropdown lang={lang} setLang={setLang} words={words} />
+              <ShoppingCart 
+                cartItems={cartItems}
+                onRemoveItem={onRemoveFromCart}
+                onUpdateQuantity={onUpdateCartQuantity}
+                onClearCart={onClearCart}
+                lang={lang}
+              />
             </div>
           )}
           {menuOpen && (
@@ -121,6 +129,18 @@ function Navbar({ lang, setLang }) {
             </div>
           )}
         </div>
+      </div>
+      
+      {/* Floating cart */}
+      <div className="navbar-floating-cart">
+        <ShoppingCart 
+          cartItems={cartItems}
+          onRemoveItem={onRemoveFromCart}
+          onUpdateQuantity={onUpdateCartQuantity}
+          onClearCart={onClearCart}
+          lang={lang}
+          isFloating={true}
+        />
       </div>
     </nav>
   )
