@@ -38,6 +38,10 @@ function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearC
         )}
       </button>
 
+      {isOpen && isFloating && (
+        <div className="cart-backdrop" onClick={toggleCart}></div>
+      )}
+
       {isOpen && (
         <div className="cart-dropdown">
           <div className="cart-header">

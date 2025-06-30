@@ -302,6 +302,18 @@ body.navbar-lock-scroll {
   z-index: 1002;
 }
 
+/* Cart backdrop for mobile */
+.cart-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
 @media (max-width: 768px) {
   .navbar-floating-cart {
     display: block; 
@@ -321,16 +333,26 @@ body.navbar-lock-scroll {
   }
   
   .navbar-floating-cart .cart-dropdown {
-    width: calc(100vw - 30px);
-    right: -15px;
-    top: 60px;
+    position: fixed;
+    width: calc(100vw - 20px);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: 170px;
+  }
+  
+  .navbar-floating-cart .cart-backdrop {
+    display: block;
   }
 }
 
 @media (max-width: 480px) {
   .navbar-floating-cart .cart-dropdown {
-    width: calc(100vw - 20px);
-    right: -10px;
+    position: fixed;
+    width: calc(100vw - 16px);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
 }
 
