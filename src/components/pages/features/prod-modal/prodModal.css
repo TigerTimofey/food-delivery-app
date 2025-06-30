@@ -98,7 +98,7 @@
 .prod-modal-desc {
   font-size: 1.2rem;
   color: var(--brand-color-medium);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   font-family: var(--brand-font);
 }
 
@@ -154,6 +154,21 @@
   outline: none;
 }
 
+.prod-modal-header {
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 0.7rem;
+}
+
+.prod-modal-price {
+  font-size: 1.8rem;
+  color: var(--brand-orange-dark);
+  font-family: var(--brand-font);
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
 @media (max-width: 900px) {
   .prod-modal-img-full-wrap {
     height: 200px;
@@ -185,5 +200,14 @@
   }
   .prod-modal-desc {
     font-size: 1rem;
+  }
+  .prod-modal-price {
+    margin-left: 0;
+    font-size: 1.5rem;
+  }
+  .prod-modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }

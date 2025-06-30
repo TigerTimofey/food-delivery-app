@@ -21,7 +21,12 @@ function ProdModal({ open, data, onClose }) {
           <img src={data.img} alt={data.title} className="prod-modal-img-full" />
         </div>
         <div className="prod-modal-content">
-          <h2 className="prod-modal-title">{data.title}</h2>
+          <div className="prod-modal-header">
+            <h2 className="prod-modal-title">{data.title}</h2>
+            {data.price && (
+              <span className="prod-modal-price">{data.price} €</span>
+            )}
+          </div>
           <p className="prod-modal-desc">{data.desc}</p>
           <div className="prod-modal-actions">
             <button

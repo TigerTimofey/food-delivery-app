@@ -9,6 +9,9 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }
   const cardsInnerRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
+  
+  // Add local state for counters
+  const [counters, setCounters] = useState(() => items.map(() => 1))
 
   useEffect(() => {
     function updateScrollButtons() {
@@ -29,6 +32,19 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }
     }
   }, [])
 
+  // If items can change, sync counters length
+  useEffect(() => {
+    setCounters(items.map(() => 1))
+  }, [items])
+
+  const handleCounter = (idx, delta) => {
+    setCounters(counters =>
+      counters.map((val, i) =>
+        i === idx ? Math.max(1, val + delta) : val
+      )
+    )
+  }
+
   return (
     <section className="features-products-section" ref={sectionRef}>
       <div className="features-products-header">
@@ -44,24 +60,75 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails }
       <div className="features-cards-scroll-container">
         <div className="features-cards-scroll-inner" ref={cardsInnerRef}>
           {items.map((item, idx) => (
-            <div className="features-card-scroll" key={idx}>
+            <div 
+              className="features-card-scroll" 
+              key={idx}
+              onClick={() => onDetails({ ...item, img })}
+              style={{ cursor: 'pointer' }}
+              tabIndex={0}
+              role="button"
+              aria-label={`View details for ${item.title}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onDetails({ ...item, img });
+                }
+              }}
+            >
               <div className="features-card-img-wrap">
                 <img src={img} alt={item.title} className="features-card-img" />
               </div>
               <div className="features-card-content">
-                <h3 className="features-card-title">{item.title}</h3>
+                <div className="features-card-title-row">
+                  <h3 className="features-card-title">{item.title}</h3>
+                  {item.price && (
+                    <span className="features-card-price">{item.price} €</span>
+                  )}
+                </div>
                 <p className="features-card-desc">{item.desc}</p>
                 <div className="features-card-actions">
-                  <button
-                    className="features-card-link"
-                    type="button"
-                    onClick={() => onDetails({ ...item, img })}
-                  >
-                    {buttonText.details}
-                  </button>
+                  <div className="features-card-counter">
+                    <button
+                      type="button"
+                      className="features-card-counter-btn"
+                      aria-label="Decrease"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCounter(idx, -1);
+                      }}
+                    >
+                      -
+                    </button>
+                    <span className="features-card-counter-value">{counters[idx]}</span>
+                    <button
+                      type="button"
+                      className="features-card-counter-btn"
+                      aria-label="Increase"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCounter(idx, 1);
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
                   <button
                     className="features-card-add-btn"
                     type="button"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card click when clicking add button
+                      
+                      // Calculate total amount
+                      const quantity = counters[idx];
+                      const price = parseFloat(item.price);
+                      const totalAmount = quantity * price;
+                      
+                      // Console log the total amount
+                      console.log(`Total amount: ${totalAmount.toFixed(2)} € (${quantity} x ${price} €)`);
+                      
+                      // Reset counter to 1
+                      handleCounter(idx, 1 - counters[idx]);
+                    }}
                   >
                     {buttonText.add}
                   </button>

@@ -187,6 +187,105 @@
   background: var(--brand-color-medium);
 }
 
+.features-card-price {
+  font-size: 1.3rem;
+  color: var(--brand-orange-dark);
+  font-family: var(--brand-font);
+  font-weight: 700;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.features-card-price--inline {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.features-card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.features-card-header-main {
+  flex: 1;
+  text-align: left;
+}
+
+.features-card-title--left {
+  text-align: left;
+  margin-bottom: 0.3rem;
+}
+
+.features-card-desc--left {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.features-card-actions--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.features-card-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 0.7rem;
+  padding: 0.3em 0.7em;
+  border: 1px solid #ddd;
+  height: 44px;
+  min-height: 44px;
+}
+
+.features-card-counter-btn {
+  background: var(--brand-orange-dark);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background 0.2s;
+  font-family: var(--brand-font);
+}
+
+.features-card-counter-btn:hover {
+  background: var(--brand-orange-darker);
+}
+
+.features-card-counter-btn:active {
+  transform: scale(0.95);
+}
+
+.features-card-counter-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+  color: var(--brand-color-dark);
+  font-family: var(--brand-font);
+}
+
+.features-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
 .features-cards-scroll-container {
   width: 100vw;
   overflow-x: auto;
@@ -244,6 +343,7 @@
   transition: box-shadow 0.2s;
   height: 560px;
   position: relative;
+  cursor: pointer;
 }
 
 .features-card-img-wrap {
@@ -254,6 +354,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1.2rem;
 }
 
 .features-card-img {
@@ -297,6 +398,37 @@
   text-align: left;
 }
 
+.features-card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.features-card-title-row .features-card-title {
+  text-align: left;
+  margin: 0;
+  flex: 1;
+}
+
+.features-card-price {
+  font-size: 2.2rem;
+  color: var(--brand-orange-dark);
+  font-family: var(--brand-font);
+  font-weight: 700;
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: auto;
+  padding-left: 1rem;
+}
+
+@media (max-width: 600px) {
+  .features-card-price {
+    font-size: 1.9rem;
+  }
+}
+
 .features-card-actions {
   display: flex;
   gap: 0.7rem;
@@ -330,7 +462,9 @@
 }
 
 .features-card-add-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
   color: var(--brand-color-white);
   background: var(--brand-orange-dark);
@@ -344,10 +478,27 @@
   order: 2;
   margin-left: auto;
   margin-right: 0;
+  height: 44px;
+  min-height: 44px;
 }
 .features-card-add-btn:hover {
-  background: var(--brand-orange-medium);
+  background: var(--brand-orange-darker);
   color: var(--brand-color-white);
+}
+
+/* Mobile styles for counter and add button sizing */
+@media (max-width: 600px) {
+  .features-card-counter {
+    height: 38px;
+    min-height: 38px;
+    padding: 0.2em 0.5em;
+  }
+  
+  .features-card-add-btn {
+    height: 38px;
+    min-height: 38px;
+    font-size: 1rem;
+  }
 }
 
 .features-cards-arrows-inline {
@@ -443,7 +594,7 @@
     flex: 0 0 80vw;
     max-width: 90vw;
     max-width: 360px;
-    height: 520px;
+    /* height: 520px; */
   }
   .features-card-img-wrap {
     height: 440px;
@@ -470,7 +621,7 @@
   .features-card-scroll {
     flex: 0 0 90vw;
     max-width: 50vw;
-    height: 390px;
+    height: 420px;
   }
   .features-card-img-wrap {
     height: 200px;
