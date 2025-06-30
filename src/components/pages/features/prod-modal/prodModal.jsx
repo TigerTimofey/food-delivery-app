@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './prodModal.css'
 
-function ProdModal({ open, data, onClose }) {
+function ProdModal({ open, data, onClose, onAddToCart, buttonText }) {
+  const [counter, setCounter] = useState(1)
+
   useEffect(() => {
     if (!open) return
     function onKeyDown(e) {
@@ -10,6 +12,32 @@ function ProdModal({ open, data, onClose }) {
     document.addEventListener('keydown', onKeyDown)
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [open, onClose])
+
+  // Reset counter when modal opens
+  useEffect(() => {
+    if (open) {
+      setCounter(1)
+    }
+  }, [open])
+
+  const handleCounter = (delta) => {
+    setCounter(prev => Math.max(1, prev + delta))
+  }
+
+  const handleAddToCart = () => {
+    if (onAddToCart && data) {
+      onAddToCart({
+        title: data.title,
+        desc: data.desc,
+        price: parseFloat(data.price),
+        img: data.img
+      }, counter)
+      
+      // Reset counter and close modal
+      setCounter(1)
+      onClose()
+    }
+  }
 
   if (!open) return null
 
@@ -29,12 +57,32 @@ function ProdModal({ open, data, onClose }) {
           </div>
           <p className="prod-modal-desc">{data.desc}</p>
           <div className="prod-modal-actions">
+            <div className="prod-modal-counter">
+              <button
+                type="button"
+                className="prod-modal-counter-btn"
+                aria-label="Decrease"
+                onClick={() => handleCounter(-1)}
+              >
+                -
+              </button>
+              <span className="prod-modal-counter-value">{counter}</span>
+              <button
+                type="button"
+                className="prod-modal-counter-btn"
+                aria-label="Increase"
+                onClick={() => handleCounter(1)}
+              >
+                +
+              </button>
+            </div>
             <button
               className="prod-modal-add-btn"
               type="button"
+              onClick={handleAddToCart}
               autoFocus
             >
-              Add to cart
+              {buttonText?.add || 'Add to cart'}
             </button>
           </div>
         </div>

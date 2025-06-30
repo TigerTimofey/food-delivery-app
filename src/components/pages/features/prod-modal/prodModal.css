@@ -129,27 +129,34 @@
 .prod-modal-actions {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
-  margin-top: 1.2rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .prod-modal-add-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
   color: var(--brand-color-white);
   background: var(--brand-orange-dark);
   border-radius: 0.7rem;
-  padding: 0.5em 2em;
+  padding: 0.3em 1.5em;
   font-family: var(--brand-font);
   font-weight: 600;
   border: none;
   cursor: pointer;
   transition: background 0.18s;
+  height: 44px;
+  min-height: 44px;
   margin-top: 0;
+  box-sizing: border-box;
 }
 .prod-modal-add-btn:hover,
 .prod-modal-add-btn:focus {
-  background: var(--brand-orange-medium);
+  background: var(--brand-orange-darker);
   color: var(--brand-color-white);
   outline: none;
 }
@@ -167,6 +174,58 @@
   font-family: var(--brand-font);
   font-weight: 700;
   margin-left: 1rem;
+}
+
+/* Counter styles for modal */
+.prod-modal-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-color-white);
+  border: 2px solid var(--brand-orange-dark);
+  border-radius: 0.7rem;
+  padding: 0;
+  font-family: var(--brand-font);
+  font-weight: 600;
+  height: 44px;
+  min-height: 44px;
+  margin-right: 1rem;
+  box-sizing: border-box;
+}
+
+.prod-modal-counter-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--brand-orange-dark);
+  cursor: pointer;
+  padding: 0.4em 0.6em;
+  border-radius: 0.3rem;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 36px;
+}
+
+.prod-modal-counter-btn:hover {
+  background: var(--brand-orange-light);
+  color: var(--brand-orange-dark);
+}
+
+.prod-modal-counter-btn:active {
+  transform: scale(0.95);
+}
+
+.prod-modal-counter-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brand-color);
+  margin: 0 0.5rem;
+  min-width: 24px;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -209,5 +268,24 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+  /* Mobile counter styles */
+  .prod-modal-counter {
+    height: 38px;
+    min-height: 38px;
+    padding: 0.2em 0.5em;
+    margin-right: 0.5rem;
+  }
+  
+  .prod-modal-add-btn {
+    height: 38px;
+    min-height: 38px;
+    font-size: 1rem;
+    padding: 0.3em 1.2em;
+  }
+  
+  .prod-modal-actions {
+    gap: 0.5rem;
+    margin-top: 1rem;
   }
 }

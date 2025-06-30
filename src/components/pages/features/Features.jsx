@@ -235,6 +235,8 @@ function Features({ lang = 'en', onAddToCart }) {
           open={!!modalData}
           data={modalData}
           onClose={() => setModalData(null)}
+          onAddToCart={onAddToCart}
+          buttonText={buttonText}
         />
       )}
     </div>

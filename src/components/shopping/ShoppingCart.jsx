@@ -70,21 +70,23 @@ function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearC
                         <p className="cart-item-price">{item.price} €</p>
                       </div>
                       <div className="cart-item-controls">
-                        <button 
-                          className="cart-item-btn"
-                          onClick={() => onUpdateQuantity && onUpdateQuantity(index, item.quantity - 1)}
-                          aria-label={cartText.decrease}
-                        >
-                          -
-                        </button>
-                        <span className="cart-item-quantity">{item.quantity}</span>
-                        <button 
-                          className="cart-item-btn"
-                          onClick={() => onUpdateQuantity && onUpdateQuantity(index, item.quantity + 1)}
-                          aria-label={cartText.increase}
-                        >
-                          +
-                        </button>
+                        <div className="cart-item-counter">
+                          <button 
+                            className="cart-item-btn"
+                            onClick={() => onUpdateQuantity && onUpdateQuantity(index, item.quantity - 1)}
+                            aria-label={cartText.decrease}
+                          >
+                            -
+                          </button>
+                          <span className="cart-item-quantity">{item.quantity}</span>
+                          <button 
+                            className="cart-item-btn"
+                            onClick={() => onUpdateQuantity && onUpdateQuantity(index, item.quantity + 1)}
+                            aria-label={cartText.increase}
+                          >
+                            +
+                          </button>
+                        </div>
                         <button 
                           className="cart-item-remove"
                           onClick={() => onRemoveItem && onRemoveItem(index)}
