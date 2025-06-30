@@ -1,0 +1,263 @@
+import React, { useState, useEffect } from 'react'
+import './Checkout.css'
+import { BUSINESS_DATA } from '../../../data/bussines-data'
+import { CHECKOUT_TEXT, BUTTON_TEXT } from '../../../data/languages'
+
+function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    deliveryType: 'delivery',
+    paymentMethod: 'bank',
+    notes: ''
+  })
+  const [step, setStep] = useState(1)
+  const [showBill, setShowBill] = useState(false)
+
+  const business = BUSINESS_DATA[0]
+  const checkoutText = CHECKOUT_TEXT[lang] || CHECKOUT_TEXT.en
+
+  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+  const taxRate = business.countryTax / 100
+  const priceWithoutTax = totalPrice / (1 + taxRate)
+  const taxAmount = totalPrice - priceWithoutTax
+
+  useEffect(() => {
+    if (!open) return
+    function onKeyDown(e) {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = 'auto'
+    }
+  }, [open, onClose])
+
+  useEffect(() => {
+    if (!showBill) return;
+    function handleClickOutside(event) {
+      const dropdown = document.querySelector('.checkout-bill-dropdown');
+      if (dropdown && !dropdown.contains(event.target)) {
+        setShowBill(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showBill]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleDeliveryType = (type) => {
+    setFormData(prev => ({ ...prev, deliveryType: type }))
+  }
+
+  const handleNext = () => setStep(s => s + 1)
+  const handleBack = () => setStep(s => s - 1)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Handle form submission logic here
+    console.log('Checkout submitted:', formData)
+    onClose()
+  }
+
+  // Step titles for pagination
+  const stepTitles = [
+    checkoutText.personalInfo,
+    checkoutText.deliveryAddress,
+    checkoutText.paymentMethod
+  ]
+
+  if (!open) return null
+
+  return (
+    <div className="checkout-backdrop" onClick={onClose}>
+      <div className="checkout-modal" onClick={e => e.stopPropagation()}>
+        <div className="checkout-header">
+          <h2 className="checkout-title">
+            <span>{checkoutText.title}</span>
+            <img
+              src="/svg/bill-line.svg"
+              alt=""
+              className="checkout-bill-icon"
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowBill((prev) => !prev) // Toggle visibility
+              }}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setShowBill((prev) => !prev) // Toggle visibility
+                }
+              }}
+              aria-label="Show bill"
+              role="button"
+            />
+            {showBill && (
+              <div className="checkout-bill-dropdown">
+                <div className="checkout-summary">
+                  <h3 className="checkout-summary-title">{checkoutText.orderSummary}</h3>
+                  <div className="checkout-items">
+                    {cartItems.map((item, index) => (
+                      <div key={index} className="checkout-item">
+                        <div className="checkout-item-info">
+                          <span className="checkout-item-name">{item.title}</span>
+                          <span className="checkout-item-quantity">x{item.quantity}</span>
+                        </div>
+                        <span className="checkout-item-price">{(item.price * item.quantity).toFixed(2)} €</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="checkout-totals">
+                    <div className="checkout-total-row">
+                      <span>{checkoutText.subtotal}</span>
+                      <span>{priceWithoutTax.toFixed(2)} €</span>
+                    </div>
+                    <hr className="checkout-totals-divider" />
+                    <div className="checkout-total-row">
+                      <span>{checkoutText.tax} {business.countryTax}%</span>
+                      <span>{taxAmount.toFixed(2)} €</span>
+                    </div>
+                    <div className="checkout-total-row checkout-final-total">
+                      <span>{checkoutText.total}</span>
+                      <span>{totalPrice.toFixed(2)} €</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </h2>
+          <button className="checkout-close" onClick={onClose} aria-label="Close checkout">×</button>
+        </div>
+        <div className="checkout-content">
+          <div className="checkout-form-section">
+            {/* Step pagination and current step title */}
+            <div className="checkout-steps-pagination">
+              {[1, 2, 3].map((n) => (
+                <div
+                  key={n}
+                  className={`checkout-step-dot${step === n ? ' active' : ''}`}
+                />
+              ))}
+            </div>
+            <div className="checkout-step-title">
+              {stepTitles[step - 1]}
+            </div>
+            <div style={{ minHeight: 410, width: '100%' }}>
+              {step === 1 && (
+                <div className="checkout-section">
+                  <div className="checkout-row">
+                    <div className="checkout-field">
+                      <label htmlFor="firstName">{checkoutText.firstName}</label>
+                      <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleInputChange} required />
+                    </div>
+                  </div>
+                  <div className="checkout-row">
+                    <div className="checkout-field">
+                      <label htmlFor="email">{checkoutText.email}</label>
+                      <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required />
+                    </div>
+                    <div className="checkout-field">
+                      <label htmlFor="phone">{checkoutText.phone}</label>
+                      <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} required />
+                    </div>
+                  </div>
+                </div>
+              )}
+              {step === 2 && (
+                <div className="checkout-section">
+                  <div className="checkout-method-row">
+                    <button
+                      type="button"
+                      className={`checkout-method-btn${formData.deliveryType === 'delivery' ? ' selected' : ''}`}
+                      onClick={() => handleDeliveryType('delivery')}
+                    >
+                      {checkoutText.delivery}
+                    </button>
+                    <button
+                      type="button"
+                      className={`checkout-method-btn${formData.deliveryType === 'pickup' ? ' selected' : ''}`}
+                      onClick={() => handleDeliveryType('pickup')}
+                    >
+                      {checkoutText.pickup}
+                    </button>
+                  </div>
+                  {formData.deliveryType === 'delivery' && (
+                    <div className="checkout-row address-city-row">
+                      <div className="checkout-field city">
+                        <label htmlFor="city">{checkoutText.city}</label>
+                        <input type="text" id="city" name="city" value={formData.city} onChange={handleInputChange} required />
+                      </div>
+                      <div className="checkout-field">
+                        <label htmlFor="address">{checkoutText.address}</label>
+                        <input type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} required />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+              {step === 3 && (
+                <div className="checkout-section payment-method-section">
+                  <div className="checkout-method-row">
+                    <button
+                      type="button"
+                      className={`checkout-method-btn${formData.paymentMethod === 'bank' ? ' selected' : ''}`}
+                      onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'bank' }))}
+                    >
+                      {checkoutText.creditCard}
+                    </button>
+                    <button
+                      type="button"
+                      className={`checkout-method-btn${formData.paymentMethod === 'cash' ? ' selected' : ''}`}
+                      onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'cash' }))}
+                    >
+                      {checkoutText.cashOnDelivery}
+                    </button>
+                  </div>
+                  {formData.paymentMethod === 'bank' && (
+                    <div className="checkout-bank-buttons">
+                      {['Swedbank', 'SEB', 'LHV', 'Coop Pank', 'Luminor'].map(bank => (
+                        <button type="button" key={bank} className="bank-btn" onClick={() => console.log('Selected bank:', bank)}>{bank}</button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            <div className="checkout-step-actions">
+              {step > 1 && (
+                <button
+                  type="button"
+                  className="checkout-submit-btn secondary"
+                  onClick={handleBack}
+                >
+                  {BUTTON_TEXT[lang]?.back || 'Previous'}
+                </button>
+              )}
+              <button
+                type="button"
+                className="checkout-submit-btn"
+                onClick={step === 3 ? handleSubmit : handleNext}
+              >
+                {step === 3 ? BUTTON_TEXT[lang]?.placeOrder || 'Place Order' : BUTTON_TEXT[lang]?.next || 'Next'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Checkout

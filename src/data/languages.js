@@ -299,11 +299,17 @@ export const CATEGORY_KEYS = ['burgers', 'soups', 'woks', 'desserts', 'drinks', 
 export const BUTTON_TEXT = {
   en: {
     details: "Product details",
-    add: "Add to cart"
+    add: "Add to cart",
+    back: "Previous",
+    next: "Next",
+    placeOrder: "Pay"
   },
   et: {
     details: "Toote info",
-    add: "Lisa korvi"
+    add: "Lisa korvi",
+    back: "Tagasi",
+    next: "Järgmine",
+    placeOrder: "Maksa"
   }
 }
 
@@ -331,6 +337,53 @@ export const CART_TEXT = {
     removeItem: "Eemalda toode",
     increase: "Suurenda",
     decrease: "Vähenda"
+  }
+}
+
+export const CHECKOUT_TEXT = {
+  en: {
+    title: "Checkout",
+    personalInfo: "Personal Information",
+    firstName: "First Name",
+    lastName: "Last Name",
+    email: "Email",
+    phone: "Phone",
+    deliveryAddress: "Delivery Address",
+    address: "Address",
+    city: "City",
+    postalCode: "Postal Code",
+    paymentMethod: "Payment Method",
+    creditCard: "Pay by bank",
+    cashOnDelivery: "Cash",
+    orderNotes: "Order Notes",
+    orderNotesPlaceholder: "Special instructions for your order...",
+    placeOrder: "Place Order",
+    orderSummary: "Order Summary",
+    subtotal: "Subtotal (excl. tax)",
+    tax: "Tax",
+    total: "Total (incl. tax)"
+  },
+  et: {
+    title: "Tellimuse vormistamine",
+    personalInfo: "Isikuandmed",
+    firstName: "Eesnimi",
+    lastName: "Perekonnanimi",
+    email: "E-post",
+    phone: "Telefon",
+    deliveryAddress: "Tarneaadress",
+    address: "Aadress",
+    city: "Linn",
+    postalCode: "Postiindeks",
+    paymentMethod: "Makseviis",
+    creditCard: "Maksa pangaga",
+    cashOnDelivery: "Sularaha",
+    orderNotes: "Tellimuse märkused",
+    orderNotesPlaceholder: "Eritingimused teie tellimusele...",
+    placeOrder: "Vormista tellimus",
+    orderSummary: "Tellimuse kokkuvõte",
+    subtotal: "Vahesumma (Km-ta)",
+    tax: "Käibemaks",
+    total: "Kokku"
   }
 }
 

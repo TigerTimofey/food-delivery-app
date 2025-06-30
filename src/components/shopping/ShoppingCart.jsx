@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import './ShoppingCart.css'
 import { BUSINESS_DATA } from '../../data/bussines-data'
 import { CART_TEXT } from '../../data/languages'
+import Checkout from './checkout/Checkout'
 
 function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearCart, lang = 'en', isFloating = false }) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
   const business = BUSINESS_DATA[0]
   const cartText = CART_TEXT[lang] || CART_TEXT.en
 
@@ -118,7 +120,10 @@ function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearC
                     >
                       {cartText.clearCart}
                     </button>
-                    <button className="cart-checkout-btn">
+                    <button 
+                      className="cart-checkout-btn"
+                      onClick={() => setIsCheckoutOpen(true)}
+                    >
                       {cartText.checkout}
                     </button>
                   </div>
@@ -128,6 +133,13 @@ function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearC
           </div>
         </div>
       )}
+
+      <Checkout
+        open={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+        cartItems={cartItems}
+        lang={lang}
+      />
     </div>
   )
 }

@@ -1,0 +1,448 @@
+@import '../../../styles/variables.css';
+
+:root {
+  --navbar-height: 64px;
+}
+
+/* Checkout Modal Backdrop */
+.checkout-backdrop {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: checkoutFadeIn 0.3s ease-out;
+}
+
+@keyframes checkoutFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Main Modal Container */
+.checkout-modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 95vw;
+  height: calc(95vh - var(--navbar-height));
+  max-width: 1200px;
+  max-height: calc(800px - var(--navbar-height));
+  display: flex;
+  flex-direction: column;
+  animation: checkoutSlideIn 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes checkoutSlideIn {
+  from { 
+    transform: scale(0.95) translateY(-20px);
+    opacity: 0;
+  }
+  to { 
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.checkout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #eee;
+  background: #f9f9f9;
+}
+
+.checkout-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-family: var(--brand-font);
+  font-weight: 700;
+  color: #333;
+}
+
+.checkout-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.checkout-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Content Area */
+.checkout-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.checkout-form-section {
+  flex: 2;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-summary-section {
+  flex: 1;
+  background: #f9f9f9;
+  border-left: 1px solid #eee;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Form Styling */
+.checkout-form {
+  max-width: 600px;
+}
+
+.checkout-section {
+  margin-bottom: 2rem;
+}
+
+.checkout-section-title {
+  font-size: 1.3rem;
+  font-family: var(--brand-font);
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--brand-orange-light);
+}
+
+.checkout-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.checkout-row.address-city-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.checkout-field {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.checkout-field.city {
+  flex: 0 0 160px;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.checkout-field label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-family: var(--brand-font);
+}
+
+.checkout-field input,
+.checkout-field textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--brand-font);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  background: #fff;
+  color: #333;
+}
+
+.checkout-field input:focus,
+.checkout-field textarea:focus {
+  outline: none;
+  border-color: var(--brand-orange-dark);
+}
+
+.checkout-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Payment Methods */
+.checkout-payment-methods {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--brand-font);
+  font-weight: 500;
+  color: #333;
+}
+
+.checkout-radio input[type="radio"] {
+  margin-right: 0.5rem;
+  width: auto;
+}
+
+.checkout-card-details {
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Submit Button */
+.checkout-submit-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: var(--brand-orange-dark);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-family: var(--brand-font);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-submit-btn:hover {
+  background: var(--brand-orange-darker);
+}
+
+.checkout-submit-btn.secondary {
+  background: #eee;
+  color: #333;
+}
+
+/* Order Summary */
+.checkout-summary {
+  position: sticky;
+  top: 0;
+}
+
+.checkout-summary-title {
+  font-size: 1.5rem;
+  font-family: var(--brand-font);
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--brand-orange-light);
+}
+
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.checkout-item:last-child {
+  border-bottom: none;
+}
+
+.checkout-item-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkout-item-name {
+  font-weight: 200;
+  color: #333;
+  font-family: var(--brand-font);
+  font-size: 1.2rem;
+}
+
+.checkout-item-quantity {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.checkout-item-price {
+  font-weight: 200;
+  font-family: var(--brand-font);
+    font-size: 1.2rem;
+}
+
+/* Totals */
+.checkout-totals {
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.checkout-totals-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 1rem;
+}
+
+.checkout-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-family: var(--brand-font);
+  color: #333;
+  font-weight: 200;
+
+}
+
+.checkout-final-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Delivery and payment method large buttons */
+.checkout-method-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+.checkout-method-row .checkout-method-btn {
+  flex: 1 1 50%;
+  min-width: 0;
+  margin-bottom: 0;
+  width: 50%;
+  box-sizing: border-box;
+}
+.checkout-method-btn {
+  padding: 1.3rem;
+  width: 500px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  background: #fff;
+  color: #333;
+  /* font-weight: 200; */
+  font-family: var(--brand-font);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkout-method-btn.selected {
+  border: 2px solid var(--brand-orange-dark);
+  background: var(--brand-orange-light);
+}
+.checkout-method-btn.invisible {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Step navigation actions at bottom */
+.checkout-step-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: flex-end;
+}
+
+/* Icons and dropdowns */
+.checkout-bill-icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.checkout-bill-dropdown {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 20001;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+  border-radius: 12px;
+  background: #f9f9f9;
+  padding: 1.5rem 1.2rem;
+  transition: opacity 0.2s;
+}
+
+/* Step indicators */
+.checkout-step-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  border: 2px solid #e0e0e0;
+  transition: background 0.2s, border 0.2s;
+}
+
+.checkout-step-dot.active {
+  background: var(--brand-orange-dark);
+  border: 2px solid var(--brand-orange-dark);
+}
+
+.checkout-step-title {
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--brand-orange-dark);
+  font-family: var(--brand-font);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Checkout Steps Pagination */
+.checkout-steps-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 480px) {
+  .checkout-modal {
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height));
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+  }
+  .checkout-backdrop {
+    top: var(--navbar-height);
+  }
+}
