@@ -361,7 +361,9 @@ export const CHECKOUT_TEXT = {
     orderSummary: "Order Summary",
     subtotal: "Subtotal (excl. tax)",
     tax: "Tax",
-    total: "Total (incl. tax)"
+    total: "Total (incl. tax)",
+    delivery:'Delivery',
+    pickup: "Pickup"
   },
   et: {
     title: "Tellimuse vormistamine",
@@ -383,7 +385,10 @@ export const CHECKOUT_TEXT = {
     orderSummary: "Tellimuse kokkuvõte",
     subtotal: "Vahesumma (Km-ta)",
     tax: "Käibemaks",
-    total: "Kokku"
+    total: "Kokku",
+ delivery: "Kohaletoimetamine",
+pickup: "Tulen ise järele"
+
   }
 }
 

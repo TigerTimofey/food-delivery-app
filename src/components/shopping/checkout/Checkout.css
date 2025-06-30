@@ -30,9 +30,9 @@
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   width: 95vw;
-  height: calc(95vh - var(--navbar-height));
+  height: calc(100vh - var(--navbar-height));
   max-width: 1200px;
-  max-height: calc(800px - var(--navbar-height));
+  max-height: calc(100vh - var(--navbar-height));
   display: flex;
   flex-direction: column;
   animation: checkoutSlideIn 0.3s ease-out;
@@ -145,6 +145,7 @@
 .checkout-field {
   flex: 1;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .checkout-field.city {
@@ -373,7 +374,8 @@
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
-  justify-content: flex-end;
+  justify-content: space-between;
+  width: 100%;
 }
 
 /* Icons and dropdowns */
@@ -445,4 +447,36 @@
   .checkout-backdrop {
     top: var(--navbar-height);
   }
+}
+
+/* Bank Buttons */
+.bank-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--brand-color-white);
+  background: var(--brand-orange-dark);
+  border-radius: 0.5rem;
+  padding: 0.5em 1em;
+  font-family: var(--brand-font);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bank-btn:hover {
+  background: var(--brand-orange-darker);
+}
+
+.bank-btn:active {
+  background: var(--brand-orange-medium);
+}
+
+.bank-btn.selected {
+  background: var(--brand-orange-medium);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

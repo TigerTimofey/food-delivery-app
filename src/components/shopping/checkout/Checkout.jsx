@@ -16,6 +16,7 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
   })
   const [step, setStep] = useState(1)
   const [showBill, setShowBill] = useState(false)
+  const [selectedBank, setSelectedBank] = useState(null)
 
   const business = BUSINESS_DATA[0]
   const checkoutText = CHECKOUT_TEXT[lang] || CHECKOUT_TEXT.en
@@ -65,13 +66,21 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
   const handleBack = () => setStep(s => s - 1)
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    // Handle form submission logic here
-    console.log('Checkout submitted:', formData)
-    onClose()
+    e.preventDefault();
+    const orderDetails = {
+      ...formData,
+      cartItems: cartItems.map(item => ({
+        title: item.title,
+        quantity: item.quantity,
+        price: item.price,
+        total: (item.price * item.quantity).toFixed(2)
+      })),
+      totalPrice: totalPrice.toFixed(2)
+    };
+    console.log('Checkout submitted:', orderDetails);
+    onClose();
   }
 
-  // Step titles for pagination
   const stepTitles = [
     checkoutText.personalInfo,
     checkoutText.deliveryAddress,
@@ -92,13 +101,17 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
               className="checkout-bill-icon"
               onClick={(e) => {
                 e.stopPropagation()
-                setShowBill((prev) => !prev) // Toggle visibility
+                setShowBill((prev) => !prev)
+              }}
+              onTouchEnd={(e) => {
+                e.stopPropagation()
+                setShowBill((prev) => !prev) 
               }}
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault()
-                  setShowBill((prev) => !prev) // Toggle visibility
+                  setShowBill((prev) => !prev)
                 }
               }}
               aria-label="Show bill"
@@ -228,7 +241,14 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
                   {formData.paymentMethod === 'bank' && (
                     <div className="checkout-bank-buttons">
                       {['Swedbank', 'SEB', 'LHV', 'Coop Pank', 'Luminor'].map(bank => (
-                        <button type="button" key={bank} className="bank-btn" onClick={() => console.log('Selected bank:', bank)}>{bank}</button>
+                        <button
+                          type="button"
+                          key={bank}
+                          className={`bank-btn${selectedBank === bank ? ' selected' : ''}`}
+                          onClick={() => setSelectedBank(bank)}
+                        >
+                          {bank}
+                        </button>
                       ))}
                     </div>
                   )}
