@@ -333,7 +333,7 @@
 .checkout-method-row {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   width: 100%;
 }
 .checkout-method-row .checkout-method-btn {
@@ -454,7 +454,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: var(--brand-color-white);
   background: var(--brand-orange-dark);
   border-radius: 0.5rem;

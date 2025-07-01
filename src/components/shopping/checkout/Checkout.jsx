@@ -3,7 +3,7 @@ import './Checkout.css'
 import { BUSINESS_DATA } from '../../../data/bussines-data'
 import { CHECKOUT_TEXT, BUTTON_TEXT } from '../../../data/languages'
 
-function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
+function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced }) {
   const [formData, setFormData] = useState({
     firstName: '',
     email: '',
@@ -78,7 +78,11 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
       totalPrice: totalPrice.toFixed(2)
     };
     console.log('Checkout submitted:', orderDetails);
-    onClose();
+    if (onOrderPlaced) {
+      onOrderPlaced();
+    } else {
+      onClose();
+    }
   }
 
   const stepTitles = [
@@ -250,6 +254,17 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en' }) {
                           {bank}
                         </button>
                       ))}
+                    </div>
+                  )}
+                  {formData.paymentMethod === 'cash' && (
+                    <div className="checkout-bank-buttons">
+                      <button
+                        type="button"
+                        className="bank-btn selected"
+                        style={{ pointerEvents: 'none' }}
+                      >
+                        Cash
+                      </button>
                     </div>
                   )}
                 </div>

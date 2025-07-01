@@ -139,6 +139,11 @@ function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearC
         onClose={() => setIsCheckoutOpen(false)}
         cartItems={cartItems}
         lang={lang}
+        onOrderPlaced={() => {
+          setIsCheckoutOpen(false);
+          setIsOpen(false);
+          onClearCart && onClearCart();
+        }}
       />
     </div>
   )
