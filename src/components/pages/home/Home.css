@@ -174,7 +174,6 @@
   display: flex;
   gap: 1.2rem;
   justify-content: center;
-  margin-top: 1.2rem;
 }
 
 
@@ -189,14 +188,13 @@
 
 .home-cards-section {
   padding-top: 0;
-  padding-bottom: 5.5rem;
+  padding-bottom: 3.5rem;
   background: none;
   width: 100vw;
   overflow-x: auto;
 }
 
 .home-cards-container {
-  /* max-width: 1400px; */
   margin: 0 auto;
   padding: 2rem;
   overflow-x: hidden; 

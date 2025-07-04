@@ -218,16 +218,18 @@ function Features({ lang = 'en', onAddToCart }) {
         const items = CATEGORY_ITEMS_TEXT[lang]?.[key] || CATEGORY_ITEMS_TEXT.en[key]
         const title = categoriesLangArr[idx]?.title || ''
         return (
-          <CategorySlider
-            key={key}
-            title={title}
-            img={cat.img}
-            items={items}
-            sectionRef={categoryRefs.current[idx]}
-            buttonText={buttonText}
-            onDetails={setModalData}
-            onAddToCart={onAddToCart}
-          />
+          <React.Fragment key={key}>
+            {idx > 0 && <hr className="features-group-divider" />}
+            <CategorySlider
+              title={title}
+              img={cat.img}
+              items={items}
+              sectionRef={categoryRefs.current[idx]}
+              buttonText={buttonText}
+              onDetails={setModalData}
+              onAddToCart={onAddToCart}
+            />
+          </React.Fragment>
         )
       })}
       {modalData && (

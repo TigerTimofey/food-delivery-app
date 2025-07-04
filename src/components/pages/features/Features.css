@@ -10,7 +10,7 @@
 
 .features-products-header {
   max-width: 1200px;
-  margin: 2rem auto 2rem auto;
+  margin: auto auto 2rem auto;
   text-align: center;
   width: 100vw;
   box-sizing: border-box;
@@ -506,7 +506,7 @@
   display: flex;
   gap: 1.2rem;
   justify-content: center;
-  /* margin-top: 1.2rem; */
+  margin-bottom: 1.2rem;
 }
 
 @media (max-width: 900px) {
@@ -637,4 +637,13 @@
     font-size: 1.3rem;
   }
 
+}
+
+.features-group-divider {
+  border: none;
+  border-top: 1.5px solid #e0e0e0;
+  margin: 2.5rem auto 0rem auto;
+  max-width: 1200px;
+  width: 90vw;
+  background: transparent;
 }
