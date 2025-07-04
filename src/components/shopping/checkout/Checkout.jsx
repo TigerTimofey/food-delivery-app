@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './Checkout.css'
 import { BUSINESS_DATA } from '../../../data/bussines-data'
 import { CHECKOUT_TEXT, BUTTON_TEXT } from '../../../data/languages'
@@ -159,7 +159,6 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
         </div>
         <div className="checkout-content">
           <div className="checkout-form-section">
-            {/* Step pagination and current step title */}
             <div className="checkout-steps-pagination">
               {[1, 2, 3].map((n) => (
                 <div
@@ -220,6 +219,11 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
                         <label htmlFor="address">{checkoutText.address}</label>
                         <input type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} required />
                       </div>
+                    </div>
+                  )}
+                  {formData.deliveryType === 'pickup' && (
+                    <div className="checkout-pickup-message">
+                      Your order will be waiting for you at {business.address}
                     </div>
                   )}
                 </div>

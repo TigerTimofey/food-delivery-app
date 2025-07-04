@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './Home.css'
 import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT, TEAM_SECTION_TEXT, MIDNIGHT_DEALS_TEXT } from '../../../data/languages'
-// import img2 from '/img4.avif'
 import { PRODUCTS } from '../../../data/products-data'
 import { useNavigate } from 'react-router-dom'
 
@@ -56,7 +55,6 @@ function Home({ lang }) {
     function handleScroll() {
       if (!bottomRef.current) return
       const rect = bottomRef.current.getBoundingClientRect()
-      // Show when bottomRef is visible in viewport (bottom of page)
       if (rect.top <= window.innerHeight && rect.bottom >= 0) {
         document.body.classList.add('show-scroll-top')
       } else {
@@ -74,7 +72,6 @@ function Home({ lang }) {
     }
   }, [])
 
-  // Update scroll arrow state
   useEffect(() => {
     function updateScrollButtons() {
       const el = cardsInnerRef.current

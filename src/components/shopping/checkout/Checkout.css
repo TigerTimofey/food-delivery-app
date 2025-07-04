@@ -4,7 +4,6 @@
   --navbar-height: 64px;
 }
 
-/* Checkout Modal Backdrop */
 .checkout-backdrop {
   position: fixed;
   top: var(--navbar-height);
@@ -24,7 +23,6 @@
   to { opacity: 1; }
 }
 
-/* Main Modal Container */
 .checkout-modal {
   background: white;
   border-radius: 12px;
@@ -50,7 +48,6 @@
   }
 }
 
-/* Header */
 .checkout-header {
   display: flex;
   justify-content: space-between;
@@ -88,7 +85,6 @@
   color: #333;
 }
 
-/* Content Area */
 .checkout-content {
   display: flex;
   flex: 1;
@@ -113,7 +109,6 @@
   overflow-y: auto;
 }
 
-/* Form Styling */
 .checkout-form {
   max-width: 600px;
 }
@@ -187,7 +182,6 @@
   min-height: 80px;
 }
 
-/* Payment Methods */
 .checkout-payment-methods {
   display: flex;
   gap: 1.5rem;
@@ -215,7 +209,6 @@
   margin-top: 1rem;
 }
 
-/* Submit Button */
 .checkout-submit-btn {
   width: 100%;
   padding: 1rem 2rem;
@@ -244,7 +237,6 @@
   color: #333;
 }
 
-/* Order Summary */
 .checkout-summary {
   position: sticky;
   top: 0;
@@ -297,7 +289,6 @@
     font-size: 1.2rem;
 }
 
-/* Totals */
 .checkout-totals {
   border-top: 1px solid #ddd;
   padding-top: 1rem;
@@ -329,7 +320,6 @@
   margin-top: 0.5rem;
 }
 
-/* Delivery and payment method large buttons */
 .checkout-method-row {
   display: flex;
   gap: 1rem;
@@ -350,7 +340,6 @@
   border: 2px solid #ddd;
   background: #fff;
   color: #333;
-  /* font-weight: 200; */
   font-family: var(--brand-font);
   font-size: 1.2rem;
   cursor: pointer;
@@ -369,7 +358,6 @@
   pointer-events: none;
 }
 
-/* Step navigation actions at bottom */
 .checkout-step-actions {
   display: flex;
   gap: 1rem;
@@ -378,7 +366,6 @@
   width: 100%;
 }
 
-/* Icons and dropdowns */
 .checkout-bill-icon {
   width: 32px;
   height: 32px;
@@ -402,7 +389,6 @@
   transition: opacity 0.2s;
 }
 
-/* Step indicators */
 .checkout-step-dot {
   width: 14px;
   height: 14px;
@@ -426,7 +412,6 @@
   text-align: center;
 }
 
-/* Checkout Steps Pagination */
 .checkout-steps-pagination {
   display: flex;
   justify-content: center;
@@ -434,7 +419,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Mobile Responsive */
 
 @media (max-width: 480px) {
   .checkout-modal {
@@ -449,7 +433,6 @@
   }
 }
 
-/* Bank Buttons */
 .bank-btn {
   display: inline-flex;
   align-items: center;
@@ -479,4 +462,17 @@
 .bank-btn.selected {
   background: var(--brand-orange-medium);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.checkout-pickup-message {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #f5f5f5;
+  border-left: 4px solid var(--brand-orange-dark);
+  border-right: 4px solid var(--brand-orange-dark);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  color: #333;
+  font-family: var(--brand-font);
 }

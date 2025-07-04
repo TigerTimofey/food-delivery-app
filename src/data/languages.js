@@ -344,8 +344,7 @@ export const CHECKOUT_TEXT = {
   en: {
     title: "Checkout",
     personalInfo: "Personal Information",
-    firstName: "First Name",
-    lastName: "Last Name",
+    firstName: "Full Name",
     email: "Email",
     phone: "Phone",
     deliveryAddress: "Delivery Address",
@@ -368,8 +367,7 @@ export const CHECKOUT_TEXT = {
   et: {
     title: "Tellimuse vormistamine",
     personalInfo: "Isikuandmed",
-    firstName: "Eesnimi",
-    lastName: "Perekonnanimi",
+    firstName: "Täisnimi",
     email: "E-post",
     phone: "Telefon",
     deliveryAddress: "Tarneaadress",

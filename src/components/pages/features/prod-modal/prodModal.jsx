@@ -13,7 +13,6 @@ function ProdModal({ open, data, onClose, onAddToCart, buttonText }) {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [open, onClose])
 
-  // Reset counter when modal opens
   useEffect(() => {
     if (open) {
       setCounter(1)
@@ -33,7 +32,6 @@ function ProdModal({ open, data, onClose, onAddToCart, buttonText }) {
         img: data.img
       }, counter)
       
-      // Reset counter and close modal
       setCounter(1)
       onClose()
     }

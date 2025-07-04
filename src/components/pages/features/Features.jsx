@@ -116,17 +116,14 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails, 
                     className="features-card-add-btn"
                     type="button"
                     onClick={(e) => {
-                      e.stopPropagation(); // Prevent card click when clicking add button
+                      e.stopPropagation(); 
                       
-                      // Calculate total amount
                       const quantity = counters[idx];
                       const price = parseFloat(item.price);
                       const totalAmount = quantity * price;
                       
-                      // Console log the total amount
                       console.log(`Total amount: ${totalAmount.toFixed(2)} € (${quantity} x ${price} €)`);
                       
-                      // Add to cart
                       if (onAddToCart) {
                         onAddToCart({
                           title: item.title,
@@ -136,7 +133,6 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails, 
                         }, quantity);
                       }
                       
-                      // Reset counter to 1
                       handleCounter(idx, 1 - counters[idx]);
                     }}
                   >

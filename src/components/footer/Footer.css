@@ -9,7 +9,6 @@ body, #root {
 }
 
 .footer-root {
-  /* Remove position: fixed, left, bottom, z-index for normal flow */
   position: static;
   left: unset;
   bottom: unset;

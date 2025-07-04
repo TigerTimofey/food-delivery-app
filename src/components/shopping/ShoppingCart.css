@@ -156,7 +156,6 @@
   gap: 0.8rem;
 }
 
-/* Counter container for cart items */
 .cart-item-counter {
   display: flex;
   align-items: center;
@@ -293,7 +292,6 @@
   background: var(--brand-orange-medium);
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .cart-dropdown {
     min-width: 280px;

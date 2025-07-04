@@ -176,7 +176,6 @@
   margin-left: 1rem;
 }
 
-/* Counter styles for modal */
 .prod-modal-counter {
   display: flex;
   align-items: center;
@@ -241,7 +240,6 @@
 @media (max-width: 600px) {
   .prod-modal {
     max-width: 99vw;
-    /* padding: 0 0 1.1rem 0; */
   }
   .prod-modal-img-full-wrap {
     height: 220px;
@@ -269,7 +267,6 @@
     align-items: flex-start;
     gap: 0.5rem;
   }
-  /* Mobile counter styles */
   .prod-modal-counter {
     height: 38px;
     min-height: 38px;

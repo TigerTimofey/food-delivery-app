@@ -13,20 +13,17 @@ function App() {
   const [showFooter, setShowFooter] = useState(false)
   const [cartItems, setCartItems] = useState([])
 
-  // Cart management functions
   const addToCart = (item, quantity = 1) => {
     setCartItems(currentItems => {
       const existingItem = currentItems.find(cartItem => cartItem.title === item.title)
       
       if (existingItem) {
-        // Update quantity if item already exists
         return currentItems.map(cartItem =>
           cartItem.title === item.title
             ? { ...cartItem, quantity: cartItem.quantity + quantity }
             : cartItem
         )
       } else {
-        // Add new item to cart
         return [...currentItems, { ...item, quantity }]
       }
     })
