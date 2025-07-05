@@ -133,7 +133,7 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
           <h2 className="checkout-title">
             <span>{checkoutText.title}</span>
             <img
-              src="/svg/bill-line.svg"
+              src="images/svg/bill-line.svg"
               alt=""
               className="checkout-bill-icon"
               onClick={(e) => {
