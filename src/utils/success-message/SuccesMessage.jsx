@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './SuccesMessage.css'
 
 function SuccesMessage({ message = '', open = false, onClose }) {
@@ -10,7 +10,7 @@ function SuccesMessage({ message = '', open = false, onClose }) {
       const timer = setTimeout(() => {
         setVisible(false)
         if (onClose) onClose()
-      }, 4000) // 4 seconds
+      }, 4000)
       return () => clearTimeout(timer)
     }
   }, [open, onClose])

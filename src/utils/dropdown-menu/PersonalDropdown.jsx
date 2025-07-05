@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './PersonalDropdown.css'
 import { LANGUAGES } from '../../data/languages'
 

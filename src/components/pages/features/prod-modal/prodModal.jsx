@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './prodModal.css'
 
 function ProdModal({ open, data, onClose, onAddToCart, buttonText }) {

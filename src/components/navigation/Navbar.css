@@ -136,7 +136,7 @@
 
 .navbar-burger.open .burger-bar:nth-child(1),
 .navbar-burger.open .burger-bar:nth-child(3) {
-  background: #ff4d4f;
+  background: var(--brand-error);
 }
 
 .navbar-burger.open .burger-bar:nth-child(1) {

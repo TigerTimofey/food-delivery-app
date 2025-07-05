@@ -10,7 +10,6 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails, 
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
   
-  // Add local state for counters
   const [counters, setCounters] = useState(() => items.map(() => 1))
 
   useEffect(() => {
@@ -32,7 +31,6 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails, 
     }
   }, [])
 
-  // If items can change, sync counters length
   useEffect(() => {
     setCounters(items.map(() => 1))
   }, [items])

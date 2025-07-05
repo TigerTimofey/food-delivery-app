@@ -298,6 +298,7 @@ function Home({ lang }) {
           </div>
         </div>
       </section>
+      
           {/* Discount Email Section */}
       <section className="discount-section">
         <form

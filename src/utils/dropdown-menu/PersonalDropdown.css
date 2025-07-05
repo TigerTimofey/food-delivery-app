@@ -74,7 +74,7 @@
 
 .personal-dropdown-menu li.active {
   font-weight: bold;
-  background: #f0f0f0;
+  background: var(--brand-color-white);
 }
 
 .personal-dropdown-menu li span[role="img"] {
