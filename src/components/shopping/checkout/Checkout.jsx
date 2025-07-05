@@ -348,34 +348,35 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
                       </button>
                     </div>
                   )}
-                  <form
-                    className="checkout-coupon-form"
-                    autoComplete="off"
-                    onSubmit={handleApplyCoupon}
-                  >
-                    <input
-                      id="coupon"
-                      type="text"
-                      value={coupon}
-                      onChange={e => {
-                        setCoupon(e.target.value)
-                        setCouponApplied(false)
-                        setCouponError('')
-                        setDiscount(0)
-                      }}
-                      placeholder={checkoutText.couponPlaceholder}
-                      className="checkout-coupon-input"
-                      disabled={couponApplied}
-                    />
-                    <button
-                      type="submit"
-                      className="checkout-coupon-btn"
-                      disabled={couponApplied}
+                  {!couponApplied ? (
+                    <form
+                      className="checkout-coupon-form"
+                      autoComplete="off"
+                      onSubmit={handleApplyCoupon}
                     >
-                      {couponApplied ? '✓' : checkoutText.couponApply}
-                    </button>
-                  </form>
-                  {couponApplied && (
+                      <input
+                        id="coupon"
+                        type="text"
+                        value={coupon}
+                        onChange={e => {
+                          setCoupon(e.target.value)
+                          setCouponApplied(false)
+                          setCouponError('')
+                          setDiscount(0)
+                        }}
+                        placeholder={checkoutText.couponPlaceholder}
+                        className="checkout-coupon-input"
+                        disabled={couponApplied}
+                      />
+                      <button
+                        type="submit"
+                        className="checkout-coupon-btn"
+                        disabled={couponApplied}
+                      >
+                        {checkoutText.couponApply}
+                      </button>
+                    </form>
+                  ) : (
                     <div className="checkout-coupon-success-bill">
                       -{couponCodeDiscount}% {checkoutText.couponSuccess}
                     </div>

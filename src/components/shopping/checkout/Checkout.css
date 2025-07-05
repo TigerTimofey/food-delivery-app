@@ -16,7 +16,6 @@
   align-items: center;
   justify-content: center;
   animation: checkoutFadeIn 0.3s ease-out;
-
   min-height: calc(100vh - var(--navbar-height));
 }
 
@@ -26,18 +25,17 @@
 }
 
 .checkout-modal {
-  background: white;
+  background: var(--brand-color-white);
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   width: 95vw;
-  height: calc(100vh - var(--navbar-height));
+  height: calc(90vh - var(--navbar-height));
   max-width: 1200px;
   max-height: calc(100vh - var(--navbar-height));
   display: flex;
   flex-direction: column;
   animation: checkoutSlideIn 0.3s ease-out;
   overflow: hidden;
-
   margin: auto;
   position: relative;
 }
@@ -510,7 +508,7 @@
 }
 
 .checkout-step-content {
-  min-height: 410px;
+  max-height: 450px;
   width: 100%;
 }
 
