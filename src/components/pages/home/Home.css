@@ -419,7 +419,7 @@
 
 .team-section {
   width: 100vw;
-  background: url('/backgrounds/offer-bg.png') center top/cover no-repeat, var(  --brand-orange-dark);
+  background: url('images/backgrounds/offer-bg.png') center top/cover no-repeat, var(  --brand-orange-dark);
   padding: 2rem 0 2rem 0;
   margin: 0;
   box-sizing: border-box;
@@ -645,7 +645,7 @@
 }
 
 .midnight-sec--features {
-  background: url('/backgrounds/offer-bg.png') center top/cover no-repeat, var(--brand-orange-dark);
+  background: url('images/backgrounds/offer-bg.png') center top/cover no-repeat, var(--brand-orange-dark);
   padding: 3rem 0 3rem 0;
   margin-bottom: 4rem;
 }

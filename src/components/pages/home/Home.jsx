@@ -164,7 +164,7 @@ function Home({ lang }) {
               </a>
             </div>
             <div className="midnight-banner-img-wrap">
-              <img src="/backgrounds/offer.png" alt="" className="title-bg-vec" />
+              <img src="images/backgrounds/offer.png" alt="" className="title-bg-vec" />
             </div>
           </div>
         </div>

@@ -61,7 +61,7 @@ function Navbar({ lang, setLang, cartItems, onRemoveFromCart, onUpdateCartQuanti
 
         <div className="navbar-logo-wrap">
           <img
-            src="/img5.avif"
+            src="/images/categories/placeholders/img5.avif"
             alt="Logo"
             className="navbar-logo-img"
           />

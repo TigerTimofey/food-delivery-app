@@ -153,17 +153,17 @@ export const TEAM_SECTION_TEXT = {
       {
         name: "Ethan Rodriguez",
         role: "Head Chef",
-        img: "/team/team1.png"
+        img: "images/team/team1.png"
       },
       {
         name: "Emily Brooks",
         role: "Fry Chef",
-        img: "/team/team2.png"
+        img: "images/team/team2.png"
       },
       {
         name: "Megan Robinson",
         role: "Waiter",
-        img: "/team/team3.png"
+        img: "images/team/team3.png"
       }
     ]
   },
@@ -175,17 +175,17 @@ export const TEAM_SECTION_TEXT = {
       {
         name: "Ethan Rodriguez",
         role: "Peakokk",
-        img: "/team/team1.png"
+        img: "images/team/team1.png"
       },
       {
         name: "Emily Brooks",
         role: "Friikartuli kokk",
-        img: "/team/team2.png"
+        img: "images/team/team2.png"
       },
       {
         name: "Megan Robinson",
         role: "Ettekandja",
-        img: "/team/team3.png"
+        img: "images/team/team3.png"
       }
     ]
   }
