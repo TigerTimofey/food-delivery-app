@@ -25,12 +25,12 @@ const languages = {
 
 export const HOME_TEXT = {
   et: {
-    title: "Me kokkame linna parimaid poke kausse",
+    title: "Me kokkame linna parimaid toite",
     subtitle: "Hea toidu kunst algab sinust",
     desc: "Sina soovid – meie teeme. Kokkame ja toome kohale – sina oled õnnelik."
   },
   en: {
-    title: "We coocking best poke bowls in town",
+    title: "We coocking best food in town",
     subtitle: "Art of great food starts with you",
     desc: "You want - we are happy. We cook and deliver - you are happy."
   }
@@ -387,6 +387,25 @@ export const CHECKOUT_TEXT = {
  delivery: "Kohaletoimetamine",
 pickup: "Tulen ise järele"
 
+  }
+}
+
+export const DISCOUNT_SECTION_TEXT = {
+  en: {
+    title: "Get a Discount Code!",
+    desc: "Enter your email and receive a discount code for your next order.",
+    placeholder: "Your email",
+    button: "Get Code",
+    sent: "Sent!",
+    success: "Discount code sent to your email!"
+  },
+  et: {
+    title: "Saa sooduskood!",
+    desc: "Sisesta oma e-post ja saa sooduskood järgmiseks tellimuseks.",
+    placeholder: "Sinu e-post",
+    button: "Hangi kood",
+    sent: "Saadetud!",
+    success: "Sooduskood saadeti sinu e-postile!"
   }
 }
 

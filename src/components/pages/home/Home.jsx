@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './Home.css'
-import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT, TEAM_SECTION_TEXT, MIDNIGHT_DEALS_TEXT } from '../../../data/languages'
+import { HOME_TEXT, PRODUCTS_SECTION_TEXT, PRODUCTS_TEXT, TEAM_SECTION_TEXT, MIDNIGHT_DEALS_TEXT, DISCOUNT_SECTION_TEXT } from '../../../data/languages'
 import { PRODUCTS } from '../../../data/products-data'
 import { useNavigate } from 'react-router-dom'
+import SuccesMessage from '../../../utils/success-message/SuccesMessage'
 
 function Home({ lang }) {
   const text = HOME_TEXT[lang] || HOME_TEXT.en
@@ -10,12 +11,15 @@ function Home({ lang }) {
   const productsLangArr = PRODUCTS_TEXT[lang] || PRODUCTS_TEXT.en
   const teamText = TEAM_SECTION_TEXT[lang] || TEAM_SECTION_TEXT.en
   const midnightText = MIDNIGHT_DEALS_TEXT[lang] || MIDNIGHT_DEALS_TEXT.en
+  const discountText = DISCOUNT_SECTION_TEXT[lang] || DISCOUNT_SECTION_TEXT.en
   const [, setShowScrollTop] = useState(false)
   const bottomRef = useRef(null)
   const navigate = useNavigate()
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
   const cardsInnerRef = useRef(null)
+  const [discountEmail, setDiscountEmail] = useState('')
+  const [discountSubmitted, setDiscountSubmitted] = useState(false)
 
   useEffect(() => {
     const nav = document.querySelector('.navbar, nav, .main-navbar')
@@ -294,8 +298,53 @@ function Home({ lang }) {
           </div>
         </div>
       </section>
+          {/* Discount Email Section */}
+      <section className="discount-section">
+        <form
+          className="discount-form"
+          onSubmit={e => {
+            e.preventDefault()
+            if (discountEmail.trim()) {
+              setDiscountSubmitted(true)
+              setDiscountEmail('')
+            }
+          }}
+        >
+          <h2 className="discount-title">
+            {discountText.title}
+          </h2>
+          <p className="discount-desc">
+            {discountText.desc}
+          </p>
+          <div className="discount-form-row">
+            <input
+              type="email"
+              className="discount-input"
+              placeholder={discountText.placeholder}
+              value={discountEmail}
+              onChange={e => setDiscountEmail(e.target.value)}
+              required
+              disabled={discountSubmitted}
+            />
+            <button
+              type="submit"
+              className="discount-btn"
+              disabled={discountSubmitted}
+            >
+              {discountSubmitted ? discountText.sent : discountText.button}
+            </button>
+          </div>
+        </form>
+        <SuccesMessage
+          message={discountText.success}
+          open={discountSubmitted}
+          onClose={() => setDiscountSubmitted(false)}
+        />
+      </section>
+
     </section>
   )
 }
 
 export default Home
+
