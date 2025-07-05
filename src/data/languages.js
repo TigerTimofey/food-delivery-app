@@ -362,7 +362,12 @@ export const CHECKOUT_TEXT = {
     tax: "Tax",
     total: "Total (incl. tax)",
     delivery:'Delivery',
-    pickup: "Pickup"
+    pickup: "Pickup",
+    coupon: "Coupon code",
+    couponPlaceholder: "Enter coupon code",
+    couponApply: "Apply",
+    couponSuccess: "coupon applied!",
+    couponInvalid: "Invalid coupon"
   },
   et: {
     title: "Tellimuse vormistamine",
@@ -384,9 +389,13 @@ export const CHECKOUT_TEXT = {
     subtotal: "Vahesumma (Km-ta)",
     tax: "Käibemaks",
     total: "Kokku",
- delivery: "Kohaletoimetamine",
-pickup: "Tulen ise järele"
-
+    delivery: "Kohaletoimetamine",
+    pickup: "Tulen ise järele",
+    coupon: "Kupongi kood",
+    couponPlaceholder: "Sisesta kupongi kood",
+    couponApply: "Rakenda",
+    couponSuccess: "kupong rakendatud!",
+    couponInvalid: "Vigane kupong"
   }
 }
 

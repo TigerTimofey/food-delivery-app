@@ -18,11 +18,18 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
   const [step, setStep] = useState(1)
   const [showBill, setShowBill] = useState(false)
   const [selectedBank, setSelectedBank] = useState(null)
+  const [coupon, setCoupon] = useState('')
+  const [couponApplied, setCouponApplied] = useState(false)
+  const [couponError, setCouponError] = useState('')
+  const [discount, setDiscount] = useState(0)
 
   const business = BUSINESS_DATA[0]
   const checkoutText = CHECKOUT_TEXT[lang] || CHECKOUT_TEXT.en
+  const couponCode = business.couponCode
+  const couponCodeDiscount = business.couponCodeDiscount 
 
-  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+  const totalPriceRaw = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+  const totalPrice = totalPriceRaw * (1 - discount)
   const taxRate = business.countryTax / 100
   const priceWithoutTax = totalPrice / (1 + taxRate)
   const taxAmount = totalPrice - priceWithoutTax
@@ -55,11 +62,12 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
   }, [showBill]);
 
   useEffect(() => {
-    if (!open) {
-      setFormData(initialFormData)
-      setStep(1)
-      setSelectedBank(null)
-    }
+    if (!open) return;
+    setCoupon('')
+    setCouponApplied(false)
+    setCouponError('')
+    setDiscount(0)
+    setSelectedBank(null)
   }, [open])
 
   const handleInputChange = (e) => {
@@ -95,6 +103,19 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
     setFormData(initialFormData)
     setStep(1)
     setSelectedBank(null)
+  }
+
+  const handleApplyCoupon = (e) => {
+    e.preventDefault()
+    if (coupon.trim().toUpperCase() === couponCode.toUpperCase()) {
+      setCouponApplied(true)
+      setCouponError('')
+      setDiscount((couponCodeDiscount || 0) / 100)
+    } else {
+      setCouponApplied(false)
+      setCouponError(checkoutText.couponInvalid)
+      setDiscount(0)
+    }
   }
 
   const stepTitles = [
@@ -151,18 +172,62 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
                   <div className="checkout-totals">
                     <div className="checkout-total-row">
                       <span>{checkoutText.subtotal}</span>
-                      <span>{priceWithoutTax.toFixed(2)} €</span>
+                      <span>
+                        {couponApplied ? (
+                          <>
+                            <span className="checkout-old-price">
+                              {(totalPriceRaw / (1 + taxRate)).toFixed(2)} €
+                            </span>
+                            <span className="checkout-new-price">
+                              {priceWithoutTax.toFixed(2)} €
+                            </span>
+                          </>
+                        ) : (
+                          <>{priceWithoutTax.toFixed(2)} €</>
+                        )}
+                      </span>
                     </div>
                     <hr className="checkout-totals-divider" />
                     <div className="checkout-total-row">
                       <span>{checkoutText.tax} {business.countryTax}%</span>
-                      <span>{taxAmount.toFixed(2)} €</span>
+                      <span>
+                        {couponApplied ? (
+                          <>
+                            <span className="checkout-old-price">
+                              {(totalPriceRaw - totalPriceRaw / (1 + taxRate)).toFixed(2)} €
+                            </span>
+                            <span className="checkout-new-price">
+                              {taxAmount.toFixed(2)} €
+                            </span>
+                          </>
+                        ) : (
+                          <>{taxAmount.toFixed(2)} €</>
+                        )}
+                      </span>
                     </div>
                     <div className="checkout-total-row checkout-final-total">
                       <span>{checkoutText.total}</span>
-                      <span>{totalPrice.toFixed(2)} €</span>
+                      <span>
+                        {couponApplied ? (
+                          <>
+                            <span className="checkout-old-price">
+                              {totalPriceRaw.toFixed(2)} €
+                            </span>
+                            <span className="checkout-new-price">
+                              {totalPrice.toFixed(2)} €
+                            </span>
+                          </>
+                        ) : (
+                          <>{totalPrice.toFixed(2)} €</>
+                        )}
+                      </span>
                     </div>
                   </div>
+                  {couponApplied && (
+                    <div className="checkout-coupon-success-bill">
+                      -{couponCodeDiscount}% {checkoutText.couponSuccess}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -182,7 +247,7 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
             <div className="checkout-step-title">
               {stepTitles[step - 1]}
             </div>
-            <div style={{ minHeight: 410, width: '100%' }}>
+            <div className="checkout-step-content">
               {step === 1 && (
                 <div className="checkout-section">
                   <div className="checkout-row">
@@ -276,11 +341,48 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
                     <div className="checkout-bank-buttons">
                       <button
                         type="button"
-                        className="bank-btn selected"
-                        style={{ pointerEvents: 'none' }}
+                        className="bank-btn selected bank-btn-disabled"
+                        disabled
                       >
                         Cash
                       </button>
+                    </div>
+                  )}
+                  <form
+                    className="checkout-coupon-form"
+                    autoComplete="off"
+                    onSubmit={handleApplyCoupon}
+                  >
+                    <input
+                      id="coupon"
+                      type="text"
+                      value={coupon}
+                      onChange={e => {
+                        setCoupon(e.target.value)
+                        setCouponApplied(false)
+                        setCouponError('')
+                        setDiscount(0)
+                      }}
+                      placeholder={checkoutText.couponPlaceholder}
+                      className="checkout-coupon-input"
+                      disabled={couponApplied}
+                    />
+                    <button
+                      type="submit"
+                      className="checkout-coupon-btn"
+                      disabled={couponApplied}
+                    >
+                      {couponApplied ? '✓' : checkoutText.couponApply}
+                    </button>
+                  </form>
+                  {couponApplied && (
+                    <div className="checkout-coupon-success-bill">
+                      -{couponCodeDiscount}% {checkoutText.couponSuccess}
+                    </div>
+                  )}
+                  {couponError && (
+                    <div className="checkout-coupon-error">
+                      {couponError}
                     </div>
                   )}
                 </div>
@@ -312,3 +414,5 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
 }
 
 export default Checkout
+
+
