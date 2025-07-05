@@ -2,7 +2,7 @@
   width: 100vw;
   min-width: 100vw;
   max-width: 100vw;
-  background: var(--web-bg);
+  background: var(--brand-color-white);
   box-sizing: border-box;
   overflow-x: hidden;
 }
