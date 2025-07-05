@@ -4,7 +4,7 @@ import { BUSINESS_DATA } from '../../../data/bussines-data'
 import { CHECKOUT_TEXT, BUTTON_TEXT } from '../../../data/languages'
 
 function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced }) {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     firstName: '',
     email: '',
     phone: '',
@@ -13,7 +13,8 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
     deliveryType: 'delivery',
     paymentMethod: 'bank',
     notes: ''
-  })
+  }
+  const [formData, setFormData] = useState(initialFormData)
   const [step, setStep] = useState(1)
   const [showBill, setShowBill] = useState(false)
   const [selectedBank, setSelectedBank] = useState(null)
@@ -53,6 +54,14 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
     };
   }, [showBill]);
 
+  useEffect(() => {
+    if (!open) {
+      setFormData(initialFormData)
+      setStep(1)
+      setSelectedBank(null)
+    }
+  }, [open])
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -83,6 +92,9 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
     } else {
       onClose();
     }
+    setFormData(initialFormData)
+    setStep(1)
+    setSelectedBank(null)
   }
 
   const stepTitles = [

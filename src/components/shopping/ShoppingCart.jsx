@@ -3,10 +3,12 @@ import './ShoppingCart.css'
 import { BUSINESS_DATA } from '../../data/bussines-data'
 import { CART_TEXT } from '../../data/languages'
 import Checkout from './checkout/Checkout'
+import SuccesMessage from '../../utils/success-message/SuccesMessage'
 
 function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearCart, lang = 'en', isFloating = false }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
   const business = BUSINESS_DATA[0]
   const cartText = CART_TEXT[lang] || CART_TEXT.en
 
@@ -143,7 +145,13 @@ function ShoppingCart({ cartItems = [], onRemoveItem, onUpdateQuantity, onClearC
           setIsCheckoutOpen(false);
           setIsOpen(false);
           onClearCart && onClearCart();
+          setShowSuccess(true);
         }}
+      />
+      <SuccesMessage
+        message="Order placed successfully!"
+        open={showSuccess}
+        onClose={() => setShowSuccess(false)}
       />
     </div>
   )
