@@ -402,19 +402,23 @@ export const CHECKOUT_TEXT = {
 export const DISCOUNT_SECTION_TEXT = {
   en: {
     title: "Get a Discount Code!",
-    desc: "Enter your email and receive a discount code for your next order.",
+    desc: `Enter your email and receive -${BUSINESS_DATA[0].couponCodeDiscount}% discount code for your next order.`,
     placeholder: "Your email",
     button: "Get Code",
     sent: "Sent!",
-    success: "Discount code sent to your email!"
+    success: "Discount code sent to your email!",
+    couponCode: BUSINESS_DATA[0].couponCode,
+    couponCodeDiscount: BUSINESS_DATA[0].couponCodeDiscount
   },
   et: {
     title: "Saa sooduskood!",
-    desc: "Sisesta oma e-post ja saa sooduskood järgmiseks tellimuseks.",
+    desc: `Sisesta oma e-post ja saa -${BUSINESS_DATA[0].couponCodeDiscount}% sooduskood järgmiseks tellimuseks.`,
     placeholder: "Sinu e-post",
     button: "Hangi kood",
     sent: "Saadetud!",
-    success: "Sooduskood saadeti sinu e-postile!"
+    success: "Sooduskood saadeti sinu e-postile!",
+    couponCode: BUSINESS_DATA[0].couponCode,
+    couponCodeDiscount: BUSINESS_DATA[0].couponCodeDiscount
   }
 }
 
