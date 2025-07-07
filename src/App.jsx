@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/navigation/Navbar'
 import Home from './components/pages/home/Home'
 import Features from './components/pages/features/Features'
-import Pricing from './components/pages/pricing/Pricing'
 import About from './components/pages/about/About'
 import Footer from './components/footer/Footer'
 
@@ -70,7 +69,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home lang={lang} />} />
         <Route path="/features" element={<Features lang={lang} onAddToCart={addToCart} />} />
-        <Route path="/pricing" element={<Pricing />} />
         <Route path="/about" element={<About />} />
       </Routes>
       {showFooter && <Footer />}

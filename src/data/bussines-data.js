@@ -14,6 +14,15 @@ export const BUSINESS_DATA = [
             instagram: 'https://www.instagram.com/',
             facebook: 'https://www.facebook.com/',
             linkedin: 'https://www.linkedin.com/',
-        }
+        },
+        workingHours: [
+            { day: 'Monday',    open: '10:00', close: '22:00' },
+            { day: 'Tuesday',   open: '10:00', close: '22:00' },
+            { day: 'Wednesday', open: '10:00', close: '22:00' },
+            { day: 'Thursday',  open: '10:00', close: '22:00' },
+            { day: 'Friday',    open: '10:00', close: '23:00' },
+            { day: 'Saturday',  open: '11:00', close: '23:00' },
+            { day: 'Sunday',    open: '11:00', close: '21:00' }
+        ]
     }
 ]

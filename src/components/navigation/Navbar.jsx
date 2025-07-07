@@ -16,7 +16,6 @@ function Navbar({ lang, setLang, cartItems, onRemoveFromCart, onUpdateCartQuanti
   // Determine active nav item by path
   const getActiveKey = () => {
     if (location.pathname.startsWith('/features')) return 'features'
-    if (location.pathname.startsWith('/pricing')) return 'pricing'
     if (location.pathname.startsWith('/about')) return 'about'
     return 'home'
   }
@@ -41,9 +40,6 @@ function Navbar({ lang, setLang, cartItems, onRemoveFromCart, onUpdateCartQuanti
         break
       case 'features':
         path = '/features'
-        break
-      case 'pricing':
-        path = '/pricing'
         break
       case 'about':
         path = '/about'
@@ -94,9 +90,7 @@ function Navbar({ lang, setLang, cartItems, onRemoveFromCart, onUpdateCartQuanti
             <li className={activeKey === 'features' ? 'active' : ''}>
               <a onClick={() => handleNav('features')} className={activeKey === 'features' ? 'active' : ''}>{words.features}</a>
             </li>
-            <li className={activeKey === 'pricing' ? 'active' : ''}>
-              <a onClick={() => handleNav('pricing')} className={activeKey === 'pricing' ? 'active' : ''}>{words.pricing}</a>
-            </li>
+      
             <li className={activeKey === 'about' ? 'active' : ''}>
               <a onClick={() => handleNav('about')} className={activeKey === 'about' ? 'active' : ''}>{words.about}</a>
             </li>

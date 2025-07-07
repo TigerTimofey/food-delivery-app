@@ -275,11 +275,14 @@ function Home({ lang }) {
             <button
               type="button"
               className="team-btn-main"
-              onClick={() => navigate('/about')}
+              onClick={() => {
+                navigate('/about')
+                window.scrollTo({ top: 0, behavior: 'auto' })
+              }}
             >
               <span className="btn-content">
                 <span className="team-title-highlight">{teamText.button}</span>
-                        <span className="arrow-anim">&rarr;</span>
+                <span className="arrow-anim">&rarr;</span>
               </span>
             </button>
           </div>

@@ -10,14 +10,12 @@ const languages = {
   en: {
     home: "Home",
     features: "Products",
-    pricing: "Pricing",
     about: "About",
     languages: enFlag
   },
   et: {
     home: "Avaleht",
     features: "Tooted",
-    pricing: "Hinnakiri",
     about: "Meist",
     languages: eeFlag
   }
