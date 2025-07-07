@@ -1168,7 +1168,10 @@
 }
 
 .features-intro-section-inner {
-  transition: max-height 0.38s cubic-bezier(.4,0,.2,1), opacity 0.32s cubic-bezier(.4,0,.2,1), padding 0.32s cubic-bezier(.4,0,.2,1);
+  transition:
+    max-height 0.38s cubic-bezier(.4,0,.2,1),
+    opacity 0.32s cubic-bezier(.4,0,.2,1),
+    padding 0.32s cubic-bezier(.4,0,.2,1);
   overflow: hidden;
   max-height: 2000px;
   opacity: 1;
@@ -1193,10 +1196,31 @@
   pointer-events: auto;
 }
 
-.features-intro-section.collapsed {
-  padding-bottom: 3rem; 
+
+.features-intro-section-inner .features-intro-card {
+  transition:
+    transform 0.38s cubic-bezier(.4,0,.2,1),
+    opacity 0.32s cubic-bezier(.4,0,.2,1),
+    max-height 0.38s cubic-bezier(.4,0,.2,1),
+    margin 0.32s cubic-bezier(.4,0,.2,1),
+    padding 0.32s cubic-bezier(.4,0,.2,1);
+  will-change: transform, opacity, max-height, margin, padding;
 }
 
-.features-intro-section.expanded {
-  padding-bottom: 3.5rem; 
+.features-intro-section.collapsed .features-intro-section-inner .features-intro-card {
+  transform: scaleY(0.7) scaleX(0.95);
+  opacity: 0;
+  max-height: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  pointer-events: none;
+}
+
+.features-intro-section.expanded .features-intro-section-inner .features-intro-card {
+  transform: scaleY(1) scaleX(1);
+  opacity: 1;
+  max-height: 600px;
+  pointer-events: auto;
 }

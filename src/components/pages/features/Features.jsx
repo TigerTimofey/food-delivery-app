@@ -32,6 +32,18 @@ function FeaturesIntroSection({ lang = 'en' }) {
   const [expanded, setExpanded] = useState(true);
 
 
+  useEffect(() => {
+    function handleScroll() {
+
+      if (expanded && window.scrollY > 40) {
+        setExpanded(false);
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [expanded]);
+
+
   const toggleLabels = FEATURES_INTRO_TOGGLE_LABELS[lang] || FEATURES_INTRO_TOGGLE_LABELS.en
 
   return (
