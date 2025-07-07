@@ -1,9 +1,197 @@
 import React, { useRef, useState, useEffect } from 'react'
 import './Features.css'
-import { PRODUCTS_TEXT, CATEGORY_ITEMS_TEXT, CATEGORY_KEYS, BUTTON_TEXT } from '../../../data/languages'
+import { PRODUCTS_TEXT, CATEGORY_ITEMS_TEXT, CATEGORY_KEYS, BUTTON_TEXT, DISCOUNT_SECTION_TEXT, MIDNIGHT_DEALS_TEXT, FEATURES_INTRO_TOGGLE_LABELS } from '../../../data/languages'
 import { PRODUCTS } from '../../../data/products-data'
 import { useLocation } from 'react-router-dom'
 import ProdModal from './prod-modal/prodModal'
+
+
+function FeaturesIntroSection({ lang = 'en' }) {
+  const midnightText = MIDNIGHT_DEALS_TEXT[lang] || MIDNIGHT_DEALS_TEXT.en
+  const discountText = DISCOUNT_SECTION_TEXT[lang] || DISCOUNT_SECTION_TEXT.en
+  const [discountEmail, setDiscountEmail] = useState('')
+  const [discountSubmitted, setDiscountSubmitted] = useState(false)
+  const itemDescriptions = midnightText.itemDescriptions || []
+
+  const firstCategoryRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.__featuresFirstCategoryRef = firstCategoryRef;
+    }
+  }, []);
+
+  const scrollToFirstCategory = () => {
+    const el = firstCategoryRef.current;
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 60;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
+
+  const [expanded, setExpanded] = useState(true);
+
+
+  const toggleLabels = FEATURES_INTRO_TOGGLE_LABELS[lang] || FEATURES_INTRO_TOGGLE_LABELS.en
+
+  return (
+    <section className={`features-intro-section samurai-deals-intro${expanded ? ' expanded' : ' collapsed'}`}>
+      {/* Toggle line/button, always visible */}
+      <div
+        className="features-intro-toggle"
+        tabIndex={0}
+        role="button"
+        aria-label={expanded ? toggleLabels.hide : toggleLabels.show}
+        onClick={() => setExpanded(e => !e)}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') setExpanded(v => !v)
+        }}
+      >
+        <span className="features-intro-toggle-label">
+          {expanded ? toggleLabels.hide : toggleLabels.show}
+        </span>
+      </div>
+      <div className="features-intro-section-inner">
+        <div className="samurai-deals-header">
+          <div className="features-title-effect-wrap">
+            <h1 className="samurai-deals-title">
+              Samurai <span className="samurai-deals-title-highlight">Deals</span>
+            </h1>
+            <img
+              src="/backgrounds/text-effect.png"
+              alt=""
+              className="features-title-effect-img"
+            />
+          </div>
+        </div>
+        <div className="samurai-deals-grid">
+          {midnightText.items.map((item, idx) => (
+            <div
+              className={`features-intro-card${idx === 0 ? ' highlight' : ''}`}
+              key={idx}
+            >
+              <div className="features-intro-icon-wrap">
+                {/* Use  SVG for each card */}
+                {idx === 0 ? (
+                  <img src="/images/svg/mail-28.svg" alt={item} className="features-intro-icon" />
+                ) : idx === 1 ? (
+                  <img src="/images/svg/mobile-phone.svg" alt={item} className="features-intro-icon" />
+                ) : idx === 2 ? (
+                  <img src="/images/svg/motor-scooter.svg" alt={item} className="features-intro-icon" />
+                ) : idx === 3 ? (
+                  <img src="/images/svg/share.svg" alt={item} className="features-intro-icon" />
+                ) : (
+                  <img src="/images/svg/bill-line.svg" alt={item} className="features-intro-icon" />
+                )}
+              </div>
+              <div className="features-intro-content">
+                <h3 className="features-intro-title">{item}</h3>
+                <p className="features-intro-desc">{itemDescriptions[idx]}</p>
+                {/* Discount by code card: email form */}
+                {idx === 0 && (
+                  <form
+                    className="discount-form features-discount-form"
+                    onSubmit={e => {
+                      e.preventDefault()
+                      if (discountEmail.trim()) {
+                        setDiscountSubmitted(true)
+                        setDiscountEmail('')
+                      }
+                    }}
+                  >
+                    {!discountSubmitted && (
+                      <div className="discount-form-row features-discount-form-row">
+                        <input
+                          type="email"
+                          className="discount-input features-discount-input"
+                          placeholder={discountText.placeholder}
+                          value={discountEmail}
+                          onChange={e => setDiscountEmail(e.target.value)}
+                          required
+                        />
+                        <button
+                          type="submit"
+                          className="discount-btn features-discount-btn"
+                        >
+                          {discountText.button}
+                        </button>
+                      </div>
+                    )}
+                    {discountSubmitted && (
+                      <div className="features-discount-success">
+                        {discountText.success}
+                      </div>
+                    )}
+                  </form>
+                )}
+                {/* Order via app card: store buttons */}
+                {idx === 1 && (
+                  <div className="features-app-buttons">
+                    <a
+                      href="https://apps.apple.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="features-app-btn features-app-btn--apple"
+                    >
+                      <span className="features-app-btn-icon">
+                        <img src="/images/svg/apple-app-store.svg" alt="App Store" />
+                      </span>
+                    </a>
+                    <a
+                      href="https://play.google.com/store"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="features-app-btn features-app-btn--google"
+                    >
+                      <span className="features-app-btn-icon">
+                        <img src="/images/svg/google-play-icon.svg" alt="Google Play" />
+                      </span>
+                    </a>
+                  </div>
+                )}
+                {/* Fast delivery card: Start order button */}
+                {idx === 2 && (
+                  <button
+                    type="button"
+                    className="features-fastorder-btn"
+                    onClick={scrollToFirstCategory}
+                  >
+                    Start order
+                  </button>
+                )}
+                {/* Optionally, add a share button for the share card */}
+                {idx === 3 && (
+                  <button
+                    type="button"
+                    className="features-share-btn"
+                    onClick={() => {
+                      if (navigator.share) {
+                        navigator.share({
+                          title: 'Check out this menu!',
+                          text: 'Let’s order together and get a client card!',
+                          url: window.location.origin + '/features'
+                        });
+                      } else {
+                        window.open(window.location.origin + '/features', '_blank');
+                      }
+                    }}
+                  >
+                    <img src="/images/svg/share.svg" alt="Share" className="features-share-btn-icon" />
+                    <span className="features-share-btn-text">
+                      {lang === 'et' ? 'Jaga menüüd' : 'Share menu'}
+                    </span>
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Hidden anchor for first category */}
+        <div ref={firstCategoryRef} style={{ position: 'absolute', top: 0 }} />
+      </div>
+    </section>
+  )
+}
 
 function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails, onAddToCart }) {
   const cardsInnerRef = useRef(null)
@@ -207,10 +395,15 @@ function Features({ lang = 'en', onAddToCart }) {
 
   return (
     <div className="features-container" style={{ marginTop: "4rem" }}>
+      <FeaturesIntroSection lang={lang} />
+     
       {PRODUCTS.map((cat, idx) => {
         const key = CATEGORY_KEYS[idx]
         const items = CATEGORY_ITEMS_TEXT[lang]?.[key] || CATEGORY_ITEMS_TEXT.en[key]
         const title = categoriesLangArr[idx]?.title || ''
+        const sectionRef = idx === 0
+          ? (window.__featuresFirstCategoryRef || React.createRef())
+          : categoryRefs.current[idx]
         return (
           <React.Fragment key={key}>
             {idx > 0 && <hr className="features-group-divider" />}
@@ -218,7 +411,7 @@ function Features({ lang = 'en', onAddToCart }) {
               title={title}
               img={cat.img}
               items={items}
-              sectionRef={categoryRefs.current[idx]}
+              sectionRef={sectionRef}
               buttonText={buttonText}
               onDetails={setModalData}
               onAddToCart={onAddToCart}
@@ -237,6 +430,8 @@ function Features({ lang = 'en', onAddToCart }) {
       )}
     </div>
   )
+
 }
 
 export default Features
+

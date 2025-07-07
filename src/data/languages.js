@@ -119,27 +119,36 @@ export const MIDNIGHT_DEALS_TEXT = {
     eyebrow: "— weekly Deals",
     title: "Samurai\nMega Deals!",
     items: [
-      "Feature 1",
-      "Feature 2",
-      "Feature 3",
-      "Feature 4",
-      "Feature 5",
-       "Feature 6"
-      
+      "Discount by code",
+      "Order via app",
+      "Fast delivery",
+      "Share menu & get client card"
     ],
+    itemDescriptions: [
+      "Use promo codes to get instant discounts on your order.",
+      "Download our app for a faster, smoother ordering experience.",
+      "Get your food delivered hot and fresh in under 30 minutes.",
+      "Share our menu with a friend and both of you receive a client card for special perks."
+    ],
+    desc: "Enjoy exclusive Samurai deals, fast delivery, and special discounts every week!",
     button: "Offers & products"
   },
   et: {
     eyebrow: "— nädala pakkumised",
     title: "Samurai\nMega pakkumised!",
     items: [
-     "Feature 1",
-      "Feature 2",
-      "Feature 3",
-      "Feature 4",
-      "Feature 5",
-       "Feature 6"
+      "Soodustus koodiga",
+      "Telli äpiga",
+      "Kiire kohaletoimetamine",
+      "Jaga menüüd ja saa kliendikaart"
     ],
+    itemDescriptions: [
+      "Kasuta sooduskoodi ja saa kohe allahindlust oma tellimuselt.",
+      "Laadi alla meie äpp ja telli mugavalt ning kiirelt.",
+      "Sinu toit jõuab kuumalt ja värskelt kohale alla 30 minutiga.",
+      "Jaga menüüd sõbraga ja mõlemad saavad kliendikaardi eripakkumisteks."
+    ],
+    desc: "Naudi eksklusiivseid Samurai pakkumisi, kiiret kohaletoimetamist ja erisoodustusi igal nädalal!",
     button: "Pakkumised & tooted"
   }
 }
@@ -422,4 +431,18 @@ export const DISCOUNT_SECTION_TEXT = {
   }
 }
 
+export const FEATURES_INTRO_TOGGLE_LABELS = {
+  en: {
+    show: "Show deals",
+    hide: "Hide deals"
+  },
+  et: {
+    show: "Näita pakkumisi",
+    hide: "Peida pakkumised"
+  }
+}
+
 export default languages
+
+
+
