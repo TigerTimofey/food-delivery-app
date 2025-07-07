@@ -71,6 +71,9 @@
   right: 0;
   bottom: 0;
 }
+.booking-form-btn:hover {
+  background: var(--brand-orange-medium);
+}
 
 .booking-form-btn:disabled {
   background: var(--brand-orange-light);
@@ -95,7 +98,7 @@
   .booking-form {
     max-width: 100vw;
     width: 100vw;
-    padding: 1.2rem 0.5rem 2.5rem 0.5rem;
+    padding-bottom: 3.5rem;
     min-height: 380px;
   }
   .booking-form-row {

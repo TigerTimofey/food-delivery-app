@@ -122,8 +122,8 @@
 }
 
 .about-team-col {
-  min-width: 220px;
-  max-width: 300px;
+  /* min-width: 220px; */
+  max-width: 200px;
   flex: 1 1 220px;
   display: flex;
   justify-content: center;
@@ -139,6 +139,11 @@
   padding: 1.2rem 1rem 1.5rem 1rem;
   text-align: center;
   width: 100%;
+  min-height: 260px;
+  height: 260px;
+  max-height: 260px;
+  overflow: hidden;
+  position: relative;
 }
 
 .about-team-img {
@@ -282,5 +287,80 @@
     min-width: 0;
     max-width: 100%;
     flex: unset;
+  }
+}
+
+.about-team-info-hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  padding: 1.2rem 0.7rem;
+  text-align: center;
+}
+
+.about-team-breadcrumb {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--brand-orange-dark);
+  margin-bottom: 0.5rem;
+}
+
+.about-team-info {
+  font-size: 0.98rem;
+  color: var(--brand-color-medium);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.about-team-breadcrumb-popup {
+  display: none;
+}
+
+.about-team-crew-eyebrow {
+  font-size: 1.25rem;
+  color: var(--brand-orange-dark);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin: 6.2rem auto 2.2rem auto;
+  text-align: center;
+  border-bottom: 3px solid var(--brand-orange-dark);
+  display: block;
+  padding-bottom: 0.5rem;
+    width: 90vw;
+    min-width: 120px;
+    max-width: 98vw;
+  background: none;
+  border-radius: 0;
+}
+.about-team-crew-eyebrow-bottom{
+    font-size: 1.25rem;
+  color: var(--brand-orange-dark);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin: 3.2rem auto 2.2rem auto;
+  text-align: center;
+  border-bottom: 3px solid var(--brand-orange-dark);
+  display: block;
+  padding-bottom: 0.5rem;
+    width: 90vw;
+    min-width: 120px;
+    max-width: 98vw;
+  background: none;
+}
+
+@media (max-width: 800px) {
+  .about-team-crew-eyebrow {
+    font-size: 1.05rem;
+    margin: 1.2rem auto 1.2rem auto;
+    padding-bottom: 0.35rem;
+  }
+    .about-team-crew-eyebrow-bottom {
+    font-size: 1.05rem;
+    margin: 1.2rem auto 1.2rem auto;
+    padding-bottom: 0.35rem;
   }
 }

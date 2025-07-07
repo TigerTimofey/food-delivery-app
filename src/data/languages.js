@@ -196,6 +196,37 @@ export const TEAM_SECTION_TEXT = {
   }
 }
 
+export const TEAM_MEMBER_BREADCRUMBS = {
+  en: [
+    {
+      breadcrumb: `— ${BUSINESS_DATA[0].brandName} Crew`,
+      info: "Ethan is our Head Chef, leading the kitchen with creativity and passion for great food."
+    },
+    {
+      breadcrumb: `— ${BUSINESS_DATA[0].brandName} Crew`,
+      info: "Emily is our Fry Chef, specializing in crispy fries and delicious sides."
+    },
+    {
+      breadcrumb: `— ${BUSINESS_DATA[0].brandName} Crew`,
+      info: "Megan is our friendly Waiter, always ready to serve you with a smile."
+    }
+  ],
+  et: [
+    {
+      breadcrumb: `— ${BUSINESS_DATA[0].brandName} Meeskond`,
+      info: "Ethan on meie peakokk, kes juhib kööki loovuse ja kirega hea toidu vastu."
+    },
+    {
+      breadcrumb: `— ${BUSINESS_DATA[0].brandName} Meeskond`,
+      info: "Emily on meie friikartuli kokk, kelle erialaks on krõbedad friikad ja maitsvad lisandid."
+    },
+    {
+      breadcrumb: `— ${BUSINESS_DATA[0].brandName} Meeskond`,
+      info: "Megan on meie sõbralik ettekandja, kes teenindab sind alati naeratusega."
+    }
+  ]
+}
+
 export const CATEGORY_ITEMS_TEXT = {
   en: {
     burgers: [
