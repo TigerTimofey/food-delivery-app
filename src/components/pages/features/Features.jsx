@@ -1,50 +1,52 @@
 import React, { useRef, useState, useEffect } from 'react'
 import './Features.css'
-import { PRODUCTS_TEXT, CATEGORY_ITEMS_TEXT, CATEGORY_KEYS, BUTTON_TEXT, DISCOUNT_SECTION_TEXT, MIDNIGHT_DEALS_TEXT, FEATURES_INTRO_TOGGLE_LABELS } from '../../../data/languages'
+import {
+  PRODUCTS_TEXT,
+  CATEGORY_ITEMS_TEXT,
+  CATEGORY_KEYS,
+  BUTTON_TEXT,
+  DISCOUNT_SECTION_TEXT,
+  MIDNIGHT_DEALS_TEXT,
+  FEATURES_INTRO_TOGGLE_LABELS
+} from '../../../data/languages'
 import { PRODUCTS } from '../../../data/products-data'
 import { useLocation } from 'react-router-dom'
 import ProdModal from './prod-modal/prodModal'
 
 
 function FeaturesIntroSection({ lang = 'en' }) {
+  // All text is now from languages.js
   const midnightText = MIDNIGHT_DEALS_TEXT[lang] || MIDNIGHT_DEALS_TEXT.en
   const discountText = DISCOUNT_SECTION_TEXT[lang] || DISCOUNT_SECTION_TEXT.en
+  const toggleLabels = FEATURES_INTRO_TOGGLE_LABELS[lang] || FEATURES_INTRO_TOGGLE_LABELS.en
   const [discountEmail, setDiscountEmail] = useState('')
   const [discountSubmitted, setDiscountSubmitted] = useState(false)
   const itemDescriptions = midnightText.itemDescriptions || []
-
-  const firstCategoryRef = useRef(null);
+  const firstCategoryRef = useRef(null)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      window.__featuresFirstCategoryRef = firstCategoryRef;
+      window.__featuresFirstCategoryRef = firstCategoryRef
     }
-  }, []);
+  }, [])
 
   const scrollToFirstCategory = () => {
-    const el = firstCategoryRef.current;
+    const el = firstCategoryRef.current
     if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 60;
-      window.scrollTo({ top, behavior: 'smooth' });
+      const top = el.getBoundingClientRect().top + window.scrollY - 60
+      window.scrollTo({ top, behavior: 'smooth' })
     }
-  };
+  }
 
-  const [expanded, setExpanded] = useState(true);
-
+  const [expanded, setExpanded] = useState(true)
 
   useEffect(() => {
     function handleScroll() {
-
-      if (expanded && window.scrollY > 40) {
-        setExpanded(false);
-      }
+      if (expanded && window.scrollY > 40) setExpanded(false)
     }
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [expanded]);
-
-
-  const toggleLabels = FEATURES_INTRO_TOGGLE_LABELS[lang] || FEATURES_INTRO_TOGGLE_LABELS.en
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [expanded])
 
   return (
     <section className={`features-intro-section samurai-deals-intro${expanded ? ' expanded' : ' collapsed'}`}>
@@ -67,7 +69,13 @@ function FeaturesIntroSection({ lang = 'en' }) {
         <div className="samurai-deals-header">
           <div className="features-title-effect-wrap">
             <h1 className="samurai-deals-title">
-              Samurai <span className="samurai-deals-title-highlight">Deals</span>
+              {/* Title from languages.js */}
+              {midnightText.title.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < midnightText.title.split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ))}
             </h1>
             <img
               src="/backgrounds/text-effect.png"
@@ -75,6 +83,7 @@ function FeaturesIntroSection({ lang = 'en' }) {
               className="features-title-effect-img"
             />
           </div>
+  
         </div>
         <div className="samurai-deals-grid">
           {midnightText.items.map((item, idx) => (
@@ -168,6 +177,7 @@ function FeaturesIntroSection({ lang = 'en' }) {
                     className="features-fastorder-btn"
                     onClick={scrollToFirstCategory}
                   >
+                    {/* Button text from languages.js if needed */}
                     Start order
                   </button>
                 )}

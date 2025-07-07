@@ -117,7 +117,7 @@ export const PRODUCTS_TEXT  = {
 export const MIDNIGHT_DEALS_TEXT = {
   en: {
     eyebrow: "— weekly Deals",
-    title: "Samurai\nMega Deals!",
+    title: "Samurai\nMega Bonuses!",
     items: [
       "Discount by code",
       "Order via app",
@@ -130,12 +130,11 @@ export const MIDNIGHT_DEALS_TEXT = {
       "Get your food delivered hot and fresh in under 30 minutes.",
       "Share our menu with a friend and both of you receive a client card for special perks."
     ],
-    desc: "Enjoy exclusive Samurai deals, fast delivery, and special discounts every week!",
     button: "Offers & products"
   },
   et: {
     eyebrow: "— nädala pakkumised",
-    title: "Samurai\nMega pakkumised!",
+    title: "Samurai\nMega Boonuseid!",
     items: [
       "Soodustus koodiga",
       "Telli äpiga",
@@ -148,7 +147,6 @@ export const MIDNIGHT_DEALS_TEXT = {
       "Sinu toit jõuab kuumalt ja värskelt kohale alla 30 minutiga.",
       "Jaga menüüd sõbraga ja mõlemad saavad kliendikaardi eripakkumisteks."
     ],
-    desc: "Naudi eksklusiivseid Samurai pakkumisi, kiiret kohaletoimetamist ja erisoodustusi igal nädalal!",
     button: "Pakkumised & tooted"
   }
 }
@@ -433,12 +431,12 @@ export const DISCOUNT_SECTION_TEXT = {
 
 export const FEATURES_INTRO_TOGGLE_LABELS = {
   en: {
-    show: "Show deals",
-    hide: "Hide deals"
+    show: "Show bonuses",
+    hide: "Hide bonuses"
   },
   et: {
-    show: "Näita pakkumisi",
-    hide: "Peida pakkumised"
+    show: "Näita boonuseid",
+    hide: "Peida boonuseid"
   }
 }
 
