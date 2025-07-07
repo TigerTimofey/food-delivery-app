@@ -14,12 +14,11 @@ function About({ lang = 'en' }) {
           <h1>{business.brandName}</h1>
           <div className="about-business-info">
             <p>
-              <strong>{business.bussinessName}</strong><br />
-              {business.address}<br />
-              {business.email}<br />
-              {business.number}
+              <strong>{business.bussinessName}</strong>
+              <span>{business.address}</span>
+              <span>{business.email}</span>
+              <span>{business.number}</span>
             </p>
-            {/* Links removed */}
           </div>
         </div>
         <BookingForm />
