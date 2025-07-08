@@ -513,6 +513,11 @@ export const FEATURES_INTRO_TOGGLE_LABELS = {
   }
 }
 
+export const FEATURES_INTRO_START_ORDER_LABEL = {
+  en: "Start order",
+  et: "Alusta tellimist"
+}
+
 export const DAYS = {
   en: languages.en.days,
   et: languages.et.days

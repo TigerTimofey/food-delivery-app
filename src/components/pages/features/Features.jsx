@@ -7,7 +7,8 @@ import {
   BUTTON_TEXT,
   DISCOUNT_SECTION_TEXT,
   MIDNIGHT_DEALS_TEXT,
-  FEATURES_INTRO_TOGGLE_LABELS
+  FEATURES_INTRO_TOGGLE_LABELS,
+  FEATURES_INTRO_START_ORDER_LABEL // <-- add this import
 } from '../../../data/languages'
 import { PRODUCTS } from '../../../data/products-data'
 import { useLocation } from 'react-router-dom'
@@ -23,6 +24,7 @@ function FeaturesIntroSection({ lang = 'en' }) {
   const [discountSubmitted, setDiscountSubmitted] = useState(false)
   const itemDescriptions = midnightText.itemDescriptions || []
   const firstCategoryRef = useRef(null)
+  const startOrderLabel = FEATURES_INTRO_START_ORDER_LABEL[lang] || FEATURES_INTRO_START_ORDER_LABEL.en
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -30,13 +32,6 @@ function FeaturesIntroSection({ lang = 'en' }) {
     }
   }, [])
 
-  const scrollToFirstCategory = () => {
-    const el = firstCategoryRef.current
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 60
-      window.scrollTo({ top, behavior: 'smooth' })
-    }
-  }
 
   const [expanded, setExpanded] = useState(true)
 
@@ -175,13 +170,13 @@ function FeaturesIntroSection({ lang = 'en' }) {
                   <button
                     type="button"
                     className="features-fastorder-btn"
-                    onClick={scrollToFirstCategory}
+                    onClick={() => {
+                      setExpanded(false);
+                    }}
                   >
-                    {/* Button text from languages.js if needed */}
-                    Start order
+                    {startOrderLabel}
                   </button>
                 )}
-                {/* Optionally, add a share button for the share card */}
                 {idx === 3 && (
                   <button
                     type="button"

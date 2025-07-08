@@ -58,8 +58,8 @@ function About({ lang }) {
             )
           })}
         </div>
-              <div className="about-team-crew-eyebrow-bottom"/>
       </div>
+              <div className="about-team-crew-eyebrow-bottom"/>
       <div className="about-map-bottom">
         <iframe
           title="Google Map"
