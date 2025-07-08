@@ -526,9 +526,9 @@
 }
 
 @media (max-width: 600px) {
-.bank-btn{
-  height: 30px
-}
+  .bank-btn {
+    height: 30px;
+  }
   .checkout-backdrop {
     position: fixed;
     top: 0;
@@ -541,8 +541,14 @@
     z-index: 10000;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: center;
+    align-items: flex-start; 
     justify-content: center;
+    /* padding-top: var(--navbar-height, 64px); */
+    box-sizing: border-box;
+  }
+  .checkout-modal {
+    margin-top: var(--navbar-height, 64px);
+    max-height: calc(100vh - var(--navbar-height, 64px));
   }
 }
 
