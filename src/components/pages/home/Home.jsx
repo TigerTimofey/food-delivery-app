@@ -153,15 +153,16 @@ function Home({ lang }) {
                   </div>
                 ))}
               </div>
-              <a
-                href="/features"
+              <button
+                type="button"
                 className="cus-btn dark midnight-order-btn"
+                onClick={() => navigate('/features')}
               >
                 <span className="btn-content">
                   {midnightText.button}
                   <span className="arrow-anim">&rarr;</span>
                 </span>
-              </a>
+              </button>
             </div>
             <div className="midnight-banner-img-wrap">
               <img src="images/backgrounds/offer.png" alt="" className="title-bg-vec" />
