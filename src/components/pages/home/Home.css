@@ -705,6 +705,7 @@
   font-size: 1em;
   font-weight: 700;
   text-decoration: none;
+  font-family: var(--brand-font);
   align-items: center;
   border: none;
   transition: background 0.18s, color 0.18s;

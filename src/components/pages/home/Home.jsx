@@ -155,7 +155,7 @@ function Home({ lang }) {
               </div>
               <button
                 type="button"
-                className="cus-btn dark midnight-order-btn"
+                className="cus-btn dark midnight-order-btn team-btn-main"
                 onClick={() => navigate('/features')}
               >
                 <span className="btn-content">
