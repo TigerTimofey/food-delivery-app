@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './BookingForm.css'
-import { BUSINESS_DATA } from '../../../data/bussines-data'
-import languages from '../../../data/languages'
-import SuccesMessage from '../../../utils/success-message/SuccesMessage'
+import { BUSINESS_DATA } from '../../../../data/bussines-data'
+import languages from '../../../../data/languages'
+import SuccesMessage from '../../../../utils/success-message/SuccesMessage'
 
 function getWorkingHoursForDate(dateStr) {
   if (!dateStr) return null

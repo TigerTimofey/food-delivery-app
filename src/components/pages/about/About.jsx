@@ -1,7 +1,7 @@
 import './About.css'
 import { BUSINESS_DATA } from '../../../data/bussines-data'
 import { TEAM_SECTION_TEXT, TEAM_MEMBER_BREADCRUMBS } from '../../../data/languages'
-import BookingForm from './BookingForm'
+import BookingForm from './booking/BookingForm'
 import { useState } from 'react'
 
 function About({ lang }) {

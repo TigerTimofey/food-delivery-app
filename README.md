@@ -1,12 +1,72 @@
-# React + Vite
+# Product Demo – Food Ordering App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + Vite demo for a food ordering web app, featuring a multi-language menu, shopping cart, booking, and more.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React + Vite**: Fast development with HMR and modern tooling.
+- **Multi-language**: English and Estonian support.
+- **Responsive UI**: Mobile-first, adaptive layouts.
+- **Product Catalog**: Browse categories, view product details, add to cart.
+- **Shopping Cart**: Floating cart, quantity management, checkout modal.
+- **Booking Form**: Reserve a table with date/time picker.
+- **Team Section**: Meet the crew with interactive cards.
+- **Discounts**: Email-based promo code system.
+- **Theming**: CSS variables for easy color/font changes.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Clone project
+
+```bash
+git clone https://github.com/TigerTimofey/template-for.git
+cd template-for
+npm install
+```
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view the app.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Technologies
+
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool and development server.
+- **React Router**: Declarative routing for React.js.
+- **Redux Toolkit**: Official, opinionated, batteries-included toolset for efficient Redux development.
+- **Axios**: Promise-based HTTP client for the browser and Node.js.
+- **i18next**: Internationalization framework for JavaScript.
+- **Date-fns**: Modern JavaScript date utility library.
+- **React Icons**: Include popular icons in your React app.
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
