@@ -114,7 +114,7 @@ function Home({ lang }) {
         <div className="home-title-effect-wrap">
           <h1 className="home-title">{text.title}</h1>
           <img
-            src="/backgrounds/text-effect.png"
+            src="images/backgrounds/text-effect.png"
             alt=""
             className="home-title-effect-img"
           />
@@ -177,7 +177,7 @@ function Home({ lang }) {
             <div className="home-title-effect-wrap home-title-effect-wrap--products">
               <h2 className="home-title" style={{ whiteSpace: 'pre-line' }}>{productsText.title}</h2>
               <img
-                src="/backgrounds/text-effect.png"
+                src="images/backgrounds/text-effect.png"
                 alt=""
                 className="home-title-effect-img home-title-effect-img--products"
               />
@@ -208,18 +208,15 @@ function Home({ lang }) {
                   <div className="home-card-content">
                     <h3 className="home-card-title">{langData.title}</h3>
                     <p className="home-card-desc">{langData.desc}</p>
-                    <a
+                    <button
                       className="home-card-link"
-                      href={card.link?.href || card.href || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={e => {
-                        e.preventDefault()
+                      type="button"
+                      onClick={() => {
                         navigate('/features', { state: { categoryIdx: idx } })
                       }}
                     >
                       {langData.label}
-                    </a>
+                    </button>
                   </div>
                 </div>
               )
