@@ -13,6 +13,7 @@ function About({ lang }) {
 
   return (
     <div className="about-container">
+        <div className="about-team-crew-eyebrow-top"/>
       <div className="about-main-row">
         <div className="about-business-col">
           <h1>{business.brandName}</h1>

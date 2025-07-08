@@ -248,12 +248,17 @@
     min-height: 160px;
   }
 }
+@media screen and (max-width: 1220px) {
+.about-main-row{
+  max-width: 1000px;
+ } 
+}
 
 @media (max-width: 1100px) {
   .about-main-row {
     flex-direction: column;
     gap: 2rem;
-    align-items: center;
+    align-items: center;    
   }
   .about-business-col {
   box-shadow: none;
@@ -320,6 +325,22 @@
   display: none;
 }
 
+.about-team-crew-eyebrow-top {
+  font-size: 1.25rem;
+  color: var(--brand-orange-dark);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin: 2.2rem auto 6.2rem auto;
+  text-align: center;
+  border-bottom: 3px solid var(--brand-orange-dark);
+  display: block;
+  padding-bottom: 0.5rem;
+    width: 90vw;
+    min-width: 120px;
+    max-width: 98vw;
+  background: none;
+  border-radius: 0;
+}
 .about-team-crew-eyebrow {
   font-size: 1.25rem;
   color: var(--brand-orange-dark);
