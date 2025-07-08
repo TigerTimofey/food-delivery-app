@@ -73,7 +73,7 @@ function FeaturesIntroSection({ lang = 'en' }) {
               ))}
             </h1>
             <img
-              src="/backgrounds/text-effect.png"
+              src="images/backgrounds/text-effect.png"
               alt=""
               className="features-title-effect-img"
             />
@@ -254,7 +254,7 @@ function CategorySlider({ title, img, items, sectionRef, buttonText, onDetails, 
         <div className="features-title-effect-wrap">
           <h2 className="features-title">{title}</h2>
           <img
-            src="/backgrounds/text-effect.png"
+            src="images/backgrounds/text-effect.png"
             alt=""
             className="features-title-effect-img"
           />
