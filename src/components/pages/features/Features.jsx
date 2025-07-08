@@ -101,7 +101,7 @@ function FeaturesIntroSection({ lang = 'en' }) {
                 {/* Discount by code card: email form */}
                 {idx === 0 && (
                   <form
-                    className="discount-form features-discount-form"
+                    className="features-discount-form"
                     onSubmit={e => {
                       e.preventDefault()
                       if (discountEmail.trim()) {
