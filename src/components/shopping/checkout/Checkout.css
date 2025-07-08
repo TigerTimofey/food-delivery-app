@@ -589,3 +589,9 @@
   color: var(--brand-color);
   font-family: var(--brand-font);
 }
+
+body.no-scroll {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100vw;
+}

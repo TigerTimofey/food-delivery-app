@@ -41,9 +41,11 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
     }
     document.addEventListener('keydown', onKeyDown)
     document.body.style.overflow = 'hidden'
+    document.body.classList.add('no-scroll')
     return () => {
       document.removeEventListener('keydown', onKeyDown)
       document.body.style.overflow = 'auto'
+      document.body.classList.remove('no-scroll')
     }
   }, [open, onClose])
 
@@ -218,7 +220,7 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
                             </span>
                           </>
                         ) : (
-                          <>{totalPrice.toFixed(2)} €</>
+                          <>&nbsp;&nbsp;{totalPrice.toFixed(2)} €</>
                         )}
                       </span>
                     </div>

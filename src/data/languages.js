@@ -440,7 +440,7 @@ export const CHECKOUT_TEXT = {
     orderSummary: "Order Summary",
     subtotal: "Subtotal (excl. tax)",
     tax: "Tax",
-    total: "Total (incl. tax)",
+    total: "Total (incl. tax)  ",
     delivery:'Delivery',
     pickup: "Pickup",
     coupon: "Coupon code",
