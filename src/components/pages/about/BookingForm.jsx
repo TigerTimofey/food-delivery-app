@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './BookingForm.css'
 import { BUSINESS_DATA } from '../../../data/bussines-data'
-import languages from '../../../data/languages' 
+import languages from '../../../data/languages'
+import SuccesMessage from '../../../utils/success-message/SuccesMessage'
 
 function getWorkingHoursForDate(dateStr) {
   if (!dateStr) return null
@@ -58,6 +59,7 @@ function BookingForm({ lang = 'en' }) {
 
   const [form, setForm] = useState({ name: '', email: '', date: '', time: '', guests: 1 })
   const [submitted, setSubmitted] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
   const [, setTouched] = useState({})
 
   const dateOptions = getNextNDates(14)
@@ -76,7 +78,9 @@ function BookingForm({ lang = 'en' }) {
 
   const handleSubmit = e => {
     e.preventDefault()
+    console.log('Booking submitted:', form)
     setSubmitted(true)
+    setShowSuccess(true)
     setTimeout(() => setSubmitted(false), 2500)
     setForm({ name: '', email: '', date: '', time: '', guests: 1 })
     setTouched({})
@@ -88,80 +92,87 @@ function BookingForm({ lang = 'en' }) {
   }
 
   return (
-    <form className="booking-form" onSubmit={handleSubmit}>
-      <h3 className="booking-form-title">{TEXT.title}</h3>
-      <div className="booking-form-row">
-        <input
-          type="text"
-          name="name"
-          placeholder={TEXT.namePlaceholder}
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder={TEXT.emailPlaceholder}
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="booking-form-row">
-        <select
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-          required
-        >
-          <option value="">{TEXT.datePlaceholder}</option>
-          {dateOptions.map(d => (
-            <option key={formatDateValue(d)} value={formatDateValue(d)}>
-              {formatDateOption(d)}
-            </option>
-          ))}
-        </select>
-        <select
-          name="time"
-          value={form.time}
-          onChange={handleChange}
-          required
-          disabled={!form.date || !workingHours || timeSlots.length === 0}
-        >
-          <option value="">
-            {form.date
-              ? (workingHours && timeSlots.length > 0
-                  ? TEXT.timePlaceholder
-                  : TEXT.closed)
-              : TEXT.selectDateFirst}
-          </option>
-          {timeSlots.map(t => (
-            <option key={t} value={t}>{t}</option>
-          ))}
-        </select>
-        <input
-          type="number"
-          name="guests"
-          min="1"
-          max="20"
-          value={form.guests}
-          onChange={handleChange}
-          required
-          placeholder={TEXT.guestsPlaceholder}
-        />
-      </div>
-      {/* Only show "Closed" if not working */}
-      {form.date && !workingHours && (
-        <div className="booking-form-hours">
-          {hoursInfo}
+    <>
+      <form className="booking-form" onSubmit={handleSubmit}>
+        <h3 className="booking-form-title">{TEXT.title}</h3>
+        <div className="booking-form-row">
+          <input
+            type="text"
+            name="name"
+            placeholder={TEXT.namePlaceholder}
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder={TEXT.emailPlaceholder}
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
         </div>
-      )}
-      <button className="booking-form-btn" type="submit" disabled={submitted}>
-        {submitted ? TEXT.booked : TEXT.bookNow}
-      </button>
-      {submitted && <div className="booking-form-success">{TEXT.success}</div>}
-    </form>
+        <div className="booking-form-row">
+          <select
+            name="date"
+            value={form.date}
+            onChange={handleChange}
+            required
+          >
+            <option value="">{TEXT.datePlaceholder}</option>
+            {dateOptions.map(d => (
+              <option key={formatDateValue(d)} value={formatDateValue(d)}>
+                {formatDateOption(d)}
+              </option>
+            ))}
+          </select>
+          <select
+            name="time"
+            value={form.time}
+            onChange={handleChange}
+            required
+            disabled={!form.date || !workingHours || timeSlots.length === 0}
+          >
+            <option value="">
+              {form.date
+                ? (workingHours && timeSlots.length > 0
+                    ? TEXT.timePlaceholder
+                    : TEXT.closed)
+                : TEXT.selectDateFirst}
+            </option>
+            {timeSlots.map(t => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+          <input
+            type="number"
+            name="guests"
+            min="1"
+            max="20"
+            value={form.guests}
+            onChange={handleChange}
+            required
+            placeholder={TEXT.guestsPlaceholder}
+          />
+        </div>
+        {/* Only show "Closed" if not working */}
+        {form.date && !workingHours && (
+          <div className="booking-form-hours">
+            {hoursInfo}
+          </div>
+        )}
+        <button className="booking-form-btn" type="submit" disabled={submitted}>
+          {submitted ? TEXT.booked : TEXT.bookNow}
+        </button>
+        {/* Remove inline success message */}
+      </form>
+      <SuccesMessage
+        message={TEXT.success}
+        open={showSuccess}
+        onClose={() => setShowSuccess(false)}
+      />
+    </>
   )
 }
 
