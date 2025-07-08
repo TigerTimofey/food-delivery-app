@@ -11,7 +11,7 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
     address: '',
     city: '',
     deliveryType: 'delivery',
-    paymentMethod: 'bank',
+    paymentMethod: 'cash', 
     notes: ''
   }
   const [formData, setFormData] = useState(initialFormData)
@@ -308,7 +308,7 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
                 </div>
               )}
               {step === 3 && (
-                <div className="checkout-section payment-method-section">
+                <div className="checkout-section">
                   <div className="checkout-method-row">
                     <button
                       type="button"
@@ -327,7 +327,7 @@ function Checkout({ open, onClose, cartItems = [], lang = 'en', onOrderPlaced })
                   </div>
                   {formData.paymentMethod === 'bank' && (
                     <div className="checkout-bank-buttons">
-                      {['Swedbank', 'SEB', 'LHV', 'Coop Pank', 'Luminor'].map(bank => (
+                      {['Swedbank', 'SEB', 'LHV', 'Coop Pank'].map(bank => (
                         <button
                           type="button"
                           key={bank}
