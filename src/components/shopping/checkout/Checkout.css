@@ -31,7 +31,8 @@
   width: 95vw;
   height: calc1(000vh - var(--navbar-height));
   max-width: 1200px;
-  max-height: calc(100vh - var(--navbar-height));
+  /* max-height: calc(100vh - var(--navbar-height)); */
+  max-height: 600px;
   display: flex;
   flex-direction: column;
   animation: checkoutSlideIn 0.3s ease-out;
@@ -211,7 +212,7 @@
 
 .checkout-submit-btn {
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 0.5rem;
   background: var(--brand-orange-dark);
   color: white;
   border: none;
