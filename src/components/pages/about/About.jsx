@@ -4,7 +4,7 @@ import { TEAM_SECTION_TEXT, TEAM_MEMBER_BREADCRUMBS } from '../../../data/langua
 import BookingForm from './BookingForm'
 import { useState } from 'react'
 
-function About({ lang = 'en' }) {
+function About({ lang }) {
   const business = BUSINESS_DATA[0]
   const teamText = TEAM_SECTION_TEXT[lang] || TEAM_SECTION_TEXT.en
   const teamInfo = TEAM_MEMBER_BREADCRUMBS[lang] || TEAM_MEMBER_BREADCRUMBS.en
@@ -25,7 +25,7 @@ function About({ lang = 'en' }) {
             </p>
           </div>
         </div>
-        <BookingForm />
+        <BookingForm lang={lang} />
       </div>
       <div className="about-team-crew-eyebrow"/>
       <div className="about-team-section">

@@ -69,7 +69,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home lang={lang} />} />
         <Route path="/features" element={<Features lang={lang} onAddToCart={addToCart} />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About lang={lang} />} />
       </Routes>
       {showFooter && <Footer />}
     </>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './BookingForm.css'
 import { BUSINESS_DATA } from '../../../data/bussines-data'
+import languages from '../../../data/languages' 
 
 function getWorkingHoursForDate(dateStr) {
   if (!dateStr) return null
@@ -38,21 +39,23 @@ function getNextNDates(n = 14) {
   return arr
 }
 
-function formatDateOption(date) {
-  // Example: "Mon, 10 Jun"
-  return date.toLocaleDateString(undefined, {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short'
-  })
-}
-
 function formatDateValue(date) {
-  // yyyy-mm-dd
   return date.toISOString().slice(0, 10)
 }
 
-function BookingForm() {
+function BookingForm({ lang = 'en' }) {
+  const TEXT = languages[lang]?.bookingForm || languages.en.bookingForm
+
+  const locale = lang === 'et' ? 'et-EE' : 'en-US'
+
+  function formatDateOption(date) {
+    return date.toLocaleDateString(locale, {
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short'
+    })
+  }
+
   const [form, setForm] = useState({ name: '', email: '', date: '', time: '', guests: 1 })
   const [submitted, setSubmitted] = useState(false)
   const [, setTouched] = useState({})
@@ -81,17 +84,17 @@ function BookingForm() {
 
   let hoursInfo = ''
   if (form.date && !workingHours) {
-    hoursInfo = 'Closed'
+    hoursInfo = TEXT.closed
   }
 
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
-      <h3 className="booking-form-title">Book a Table</h3>
+      <h3 className="booking-form-title">{TEXT.title}</h3>
       <div className="booking-form-row">
         <input
           type="text"
           name="name"
-          placeholder="Your name"
+          placeholder={TEXT.namePlaceholder}
           value={form.name}
           onChange={handleChange}
           required
@@ -99,7 +102,7 @@ function BookingForm() {
         <input
           type="email"
           name="email"
-          placeholder="Your email"
+          placeholder={TEXT.emailPlaceholder}
           value={form.email}
           onChange={handleChange}
           required
@@ -112,7 +115,7 @@ function BookingForm() {
           onChange={handleChange}
           required
         >
-          <option value="">Select date</option>
+          <option value="">{TEXT.datePlaceholder}</option>
           {dateOptions.map(d => (
             <option key={formatDateValue(d)} value={formatDateValue(d)}>
               {formatDateOption(d)}
@@ -129,9 +132,9 @@ function BookingForm() {
           <option value="">
             {form.date
               ? (workingHours && timeSlots.length > 0
-                  ? 'Select time'
-                  : 'Closed')
-              : 'Select date first'}
+                  ? TEXT.timePlaceholder
+                  : TEXT.closed)
+              : TEXT.selectDateFirst}
           </option>
           {timeSlots.map(t => (
             <option key={t} value={t}>{t}</option>
@@ -145,7 +148,7 @@ function BookingForm() {
           value={form.guests}
           onChange={handleChange}
           required
-          placeholder="Guests"
+          placeholder={TEXT.guestsPlaceholder}
         />
       </div>
       {/* Only show "Closed" if not working */}
@@ -155,9 +158,9 @@ function BookingForm() {
         </div>
       )}
       <button className="booking-form-btn" type="submit" disabled={submitted}>
-        {submitted ? 'Booked!' : 'Book Now'}
+        {submitted ? TEXT.booked : TEXT.bookNow}
       </button>
-      {submitted && <div className="booking-form-success">Thank you! Your booking is received.</div>}
+      {submitted && <div className="booking-form-success">{TEXT.success}</div>}
     </form>
   )
 }

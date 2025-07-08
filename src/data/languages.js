@@ -11,13 +11,57 @@ const languages = {
     home: "Home",
     features: "Products",
     about: "About",
-    languages: enFlag
+    languages: enFlag,
+    days: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    bookingForm: {
+      title: "Book a Table",
+      namePlaceholder: "Your name",
+      emailPlaceholder: "Your email",
+      datePlaceholder: "Select date",
+      timePlaceholder: "Select time",
+      selectDateFirst: "Select date first",
+      closed: "Closed",
+      guestsPlaceholder: "Guests",
+      bookNow: "Book Now",
+      booked: "Booked!",
+      success: "Thank you! Your booking is received."
+    }
   },
   et: {
     home: "Avaleht",
     features: "Tooted",
     about: "Meist",
-    languages: eeFlag
+    languages: eeFlag,
+    days: [
+      "Esmaspäev",
+      "Teisipäev",
+      "Kolmapäev",
+      "Neljapäev",
+      "Reede",
+      "Laupäev",
+      "Pühapäev"
+    ],
+    bookingForm: {
+      title: "Broneeri laud",
+      namePlaceholder: "Sinu nimi",
+      emailPlaceholder: "Sinu e-post",
+      datePlaceholder: "Vali kuupäev",
+      timePlaceholder: "Vali kellaaeg",
+      selectDateFirst: "Vali esmalt kuupäev",
+      closed: "Suletud",
+      guestsPlaceholder: "Külalised",
+      bookNow: "Broneeri",
+      booked: "Broneeritud!",
+      success: "Aitäh! Teie broneering on vastu võetud."
+    }
   }
 }
 
@@ -467,6 +511,11 @@ export const FEATURES_INTRO_TOGGLE_LABELS = {
     show: "Näita boonuseid",
     hide: "Peida boonuseid"
   }
+}
+
+export const DAYS = {
+  en: languages.en.days,
+  et: languages.et.days
 }
 
 export default languages
