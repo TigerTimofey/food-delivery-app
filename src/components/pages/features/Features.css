@@ -1036,8 +1036,7 @@
 
 @media (max-width: 600px) {
   .features-app-buttons {
-    flex-direction: column;
-    gap: 0.7rem;
+    gap: 0;
   }
   .features-app-btn {
     width: 100%;
