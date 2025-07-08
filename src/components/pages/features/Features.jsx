@@ -72,11 +72,6 @@ function FeaturesIntroSection({ lang = 'en' }) {
                 </React.Fragment>
               ))}
             </h1>
-            <img
-              src="images/backgrounds/text-effect.png"
-              alt=""
-              className="features-title-effect-img"
-            />
           </div>
   
         </div>
