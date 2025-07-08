@@ -16,6 +16,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2.5rem;
+  padding: 2rem;
   width: 100vw;
   max-width: 100vw;
   box-sizing: border-box;
@@ -144,7 +145,7 @@
 }
 
 .home-services-section {
-  padding-top: 2rem;
+  padding: 2rem;
   padding-bottom: 4rem;
   text-align: center;
   background: none;
@@ -385,6 +386,9 @@
 }
 
 @media (max-width: 600px) {
+  .home-hero{
+      padding: 0rem 2rem 0rem 2rem;
+  }
   .home-cards-container {
     padding: 0 1vw;
   }
@@ -879,6 +883,7 @@ body.show-scroll-top .scroll-to-top-fab {
   max-width: 450px;
   width: 100%;
   margin: 0 auto;
+  padding: 20px;
   border-radius: 1.2rem;
   display: flex;
   flex-direction: column;

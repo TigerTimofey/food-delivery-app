@@ -37,7 +37,7 @@ function FeaturesIntroSection({ lang = 'en' }) {
 
   useEffect(() => {
     function handleScroll() {
-      if (expanded && window.scrollY > 40) setExpanded(false)
+      if (expanded && window.scrollY > 40 && window.innerWidth > 900) setExpanded(false)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
