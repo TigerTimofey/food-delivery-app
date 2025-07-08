@@ -117,7 +117,7 @@
   width: 30px;
   height: 30px;
   position: relative;
-  z-index: 100;
+  z-index: 1200;
   padding: 0;
   transition: transform 0.3s cubic-bezier(.4,2,.3,1);
 }
